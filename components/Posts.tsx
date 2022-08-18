@@ -5,36 +5,36 @@ const posts = [
     {
         id: '123',
         username: 'dontrellthedev',
-        userImg: 'https://links.papareact.com/3ke',
-        img: 'https://links.papareact.com/3ke',
+        userImg: 'https://i.ibb.co/KFhK5zL/dontrell-professional.jpg',
+        img: 'https://i.ibb.co/KFhK5zL/dontrell-professional.jpg',
         caption: 'SUBSCRIBE AND DESTROY THE LIKE BUTTON for the YT algorithm'
     },
     {
         id: '123',
         username: 'dontrellthedev',
-        userImg: 'https://links.papareact.com/3ke',
-        img: 'https://links.papareact.com/3ke',
+        userImg: 'https://i.ibb.co/KFhK5zL/dontrell-professional.jpg',
+        img: 'https://i.ibb.co/KFhK5zL/dontrell-professional.jpg',
         caption: 'SUBSCRIBE AND DESTROY THE LIKE BUTTON for the YT algorithm'
     },
     {
         id: '123',
         username: 'dontrellthedev',
-        userImg: 'https://links.papareact.com/3ke',
-        img: 'https://links.papareact.com/3ke',
+        userImg: 'https://i.ibb.co/KFhK5zL/dontrell-professional.jpg',
+        img: 'https://i.ibb.co/KFhK5zL/dontrell-professional.jpg',
         caption: 'SUBSCRIBE AND DESTROY THE LIKE BUTTON for the YT algorithm'
     },
     {
         id: '123',
         username: 'dontrellthedev',
-        userImg: 'https://links.papareact.com/3ke',
-        img: 'https://links.papareact.com/3ke',
+        userImg: 'https://i.ibb.co/KFhK5zL/dontrell-professional.jpg',
+        img: 'https://i.ibb.co/KFhK5zL/dontrell-professional.jpg',
         caption: 'SUBSCRIBE AND DESTROY THE LIKE BUTTON for the YT algorithm'
     },
     {
         id: '123',
         username: 'dontrellthedev',
-        userImg: 'https://links.papareact.com/3ke',
-        img: 'https://links.papareact.com/3ke',
+        userImg: 'https://i.ibb.co/KFhK5zL/dontrell-professional.jpg',
+        img: 'https://i.ibb.co/KFhK5zL/dontrell-professional.jpg',
         caption: 'SUBSCRIBE AND DESTROY THE LIKE BUTTON for the YT algorithm'
     },
 ]
