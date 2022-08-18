@@ -1,5 +1,12 @@
 import React from 'react';
-import {BookmarkIcon, ChatIcon, DotsHorizontalIcon, HeartIcon, PaperAirplaneIcon} from "@heroicons/react/outline";
+import {
+    BookmarkIcon,
+    ChatIcon,
+    DotsHorizontalIcon,
+    EmojiHappyIcon,
+    HeartIcon,
+    PaperAirplaneIcon
+} from "@heroicons/react/outline";
 
 import {HeartIcon as HeartIconFilled} from '@heroicons/react/solid'
 
@@ -34,11 +41,17 @@ function Post({id, username, userImg, caption, img}: any) {
                 {caption}
             </p>
 
+
             {/*  comments  */}
 
 
             {/*  input box  */}
+            <form className='flex items-center p-4'>
+                <EmojiHappyIcon className='h-7' />
 
+                <input type="text" placeholder='add a comment...' className='border-none flex-1 focus:ring-0 outline-none'/>
+                <button className='font-semibold text-blue-400'>Post</button>
+            </form>
 
         </div>
 
