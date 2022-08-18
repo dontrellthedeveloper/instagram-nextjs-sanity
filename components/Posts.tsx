@@ -1,5 +1,9 @@
 import React from 'react';
 import Post from "./Post";
+import Image from 'next/image';
+import Link from 'next/link';
+
+
 
 const posts = [
     {

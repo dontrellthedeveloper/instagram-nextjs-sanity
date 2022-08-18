@@ -1,4 +1,4 @@
-export interface Image {
+export interface igImage {
     caption: string;
     image: {
         asset: {
