@@ -8,11 +8,20 @@ import {
     PaperAirplaneIcon,
     MenuIcon
 } from "@heroicons/react/outline";
+import { googleLogout, GoogleLogin } from '@react-oauth/google';
+
+import useAuthStore from '../store/authStore';
+import {createOrGetUser} from "../utils";
 
 import {HomeIcon} from "@heroicons/react/solid"
+import {AiOutlineLogout} from "react-icons/ai";
 
 
 const Header = () => {
+    const { userProfile, addUser, removeUser }: any = useAuthStore();
+
+    // @ts-ignore
+
     return (
         <div className='shadow-sm border-b bg-white sticky top-0 z-50'>
             <div className='flex justify-between bg-white max-w-6xl mx-5 lg:mx-auto'>
@@ -45,22 +54,49 @@ const Header = () => {
 
                 {/*  Right  */}
                 <div className='flex items-center justify-end space-x-4'>
-                    <HomeIcon className='navBtn' />
-                    <MenuIcon className='h-6 md:hidden' />
-                    <div className='relative navBtn'>
-                        <PaperAirplaneIcon className='navBtn rotate-45' />
-                        <div className='absolute -top-1 -right-2 text-xs w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse text-white'>3</div>
+
+
+                    {userProfile ? (
+                        <>
+                            <HomeIcon className='navBtn' />
+                            <MenuIcon className='h-6 md:hidden' />
+                            <div className='relative navBtn'>
+                                <PaperAirplaneIcon className='navBtn rotate-45' />
+                                <div className='absolute -top-1 -right-2 text-xs w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse text-white'>3</div>
+                            </div>
+                            <PlusCircleIcon className='navBtn' />
+                            <UserGroupIcon className='navBtn' />
+                            <HeartIcon className='navBtn' />
+
+                            <img
+                                src={userProfile.image}
+                                alt='profile pic'
+                                className=' h-10 rounded-full cursor-pointer'
+                            />
+                            <button
+                                type='button'
+                                className=' border-2 p-2 rounded-full cursor-pointer outline-none shadow-md'
+                                onClick={() => {
+                                    googleLogout();
+                                    removeUser();
+                                }}
+                            >
+                                <AiOutlineLogout color='red' fontSize={21} />
+                            </button>
+                        </>
+                    ) : (
+                        <GoogleLogin
+                            onSuccess={(response) => createOrGetUser(response, addUser) }
+                            onError={() => console.log('Login Failed')}
+                        />
+                    )}
+
+
+
+
+                    <div>
+
                     </div>
-                    <PlusCircleIcon className='navBtn' />
-                    <UserGroupIcon className='navBtn' />
-                    <HeartIcon className='navBtn' />
-
-                    <img
-                        src='https://i.ibb.co/KFhK5zL/dontrell-professional.jpg'
-                        alt='profile pic'
-                        className='h-10 rounded-full cursor-pointer'
-                    />
-
 
                 </div>
             </div>
