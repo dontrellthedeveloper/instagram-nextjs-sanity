@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Head from "next/head";
+import {RecoilRoot} from "recoil";
 
 function MyApp({ Component, pageProps }: AppProps) {
     const [isSSR, setIsSSR] = useState(true);
@@ -21,7 +22,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           </Head>
 
           <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_GOOGLE_API_TOKEN}`}>
-              <Component {...pageProps} />
+              <RecoilRoot>
+                  <Component {...pageProps} />
+              </RecoilRoot>
           </GoogleOAuthProvider>
       </>
 

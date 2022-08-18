@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "@headlessui/react": "^1.6.6",
     "@react-oauth/google": "^0.2.6",
     "@sanity/client": "^3.3.0",
     "@tailwindcss/forms": "^0.5.2",
@@ -15,6 +16,7 @@
     "jwt-decode": "^3.1.2",
     "faker": "^5.5.3",
     "next": "12.1.6",
+    "recoil": "^0.7.4",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-google-login": "^5.2.2",

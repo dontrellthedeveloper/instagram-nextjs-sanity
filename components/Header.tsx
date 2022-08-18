@@ -10,6 +10,9 @@ import {
 } from "@heroicons/react/outline";
 import { googleLogout, GoogleLogin } from '@react-oauth/google';
 
+import {useRecoilState} from "recoil";
+import {modalState} from "../atoms/modalAtom";
+
 import useAuthStore from '../store/authStore';
 import {createOrGetUser} from "../utils";
 
@@ -19,6 +22,7 @@ import {AiOutlineLogout} from "react-icons/ai";
 
 
 const Header = () => {
+    const [open, setOpen] = useRecoilState(modalState);
     const { userProfile, addUser, removeUser }: any = useAuthStore();
 
     // @ts-ignore
@@ -65,7 +69,7 @@ const Header = () => {
                                 <PaperAirplaneIcon className='navBtn rotate-45' />
                                 <div className='absolute -top-1 -right-2 text-xs w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse text-white'>3</div>
                             </div>
-                            <PlusCircleIcon className='navBtn' />
+                            <PlusCircleIcon onClick={() => setOpen(true)} className='navBtn' />
                             <UserGroupIcon className='navBtn' />
                             <HeartIcon className='navBtn' />
 

@@ -6,6 +6,7 @@ import NoResults from '../components/NoResults';
 
 import axios from 'axios';
 import { igImage } from '../types';
+import Modal from "../components/Modal";
 
 interface IProps {
     images: igImage[];
@@ -33,6 +34,7 @@ const Home = ({images}: IProps) => {
             {/*<Feed/>*/}
 
             {/* Modal */}
+            <Modal/>
         </div>
     )
 }
