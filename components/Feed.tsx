@@ -34,7 +34,7 @@ const Feed: NextPage<IProps> = ({post}) => {
                     {/* Header */}
                     <div className='flex items-center p-5'>
                         <img src={post.postedBy?.image} className='rounded-full h-12 w-12 object-contain border p-1 mr-3' alt=""/>
-                        <p className='flex-1 font-bold'>{post.postedBy.userName}{' '}</p>
+                        <p className='flex-1 font-bold'>{post.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '}</p>
                         <DotsHorizontalIcon className='h-5'/>
                     </div>
                     {/*  img  */}
@@ -50,7 +50,7 @@ const Feed: NextPage<IProps> = ({post}) => {
                     </div>
                     {/*  caption  */}
                     <p className='p-5 truncate'>
-                        <span className='font-bold mr-1'>{post.postedBy.userName} </span>
+                        <span className='font-bold mr-1'>{post.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '} </span>
                         {post.caption}
                     </p>
                     {/*  comments  */}
