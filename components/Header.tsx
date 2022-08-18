@@ -15,6 +15,7 @@ import {createOrGetUser} from "../utils";
 
 import {HomeIcon} from "@heroicons/react/solid"
 import {AiOutlineLogout} from "react-icons/ai";
+// import {AiOutlineLogout} from "react-icons/ai";
 
 
 const Header = () => {
@@ -82,13 +83,16 @@ const Header = () => {
                                 }}
                             >
                                 <AiOutlineLogout color='red' fontSize={21} />
+                                {/*Logout*/}
                             </button>
                         </>
                     ) : (
                         <GoogleLogin
                             onSuccess={(response) => createOrGetUser(response, addUser) }
+                            // onSuccess={(response) => console.log(response) }
                             onError={() => console.log('Login Failed')}
                         />
+                         // <div></div>
                     )}
 
 

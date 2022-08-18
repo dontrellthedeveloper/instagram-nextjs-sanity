@@ -15,10 +15,6 @@ const Home = ({images}: IProps) => {
     console.log(images)
     return (
         <div className="bg-gray-50 h-screen overflow-y-scroll scrollbar-hide">
-            <Head>
-                <title>Instagram | Dontrell Dev</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
 
             {/* Header */}
             <Header/>
