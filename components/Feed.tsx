@@ -1,5 +1,6 @@
 import React from 'react';
 import Stories from "./Stories";
+import Posts from "./Posts";
 
 function Feed() {
     return (
@@ -8,6 +9,7 @@ function Feed() {
                 {/*  Stories  */}
                 <Stories/>
                 {/*  Posts  */}
+                <Posts/>
             </section>
 
             <section>
