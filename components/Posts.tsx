@@ -53,7 +53,6 @@ function Posts(props: any) {
                     caption={post.caption}
                 />
             ))}
-            <Post/>
         </div>
     );
 }

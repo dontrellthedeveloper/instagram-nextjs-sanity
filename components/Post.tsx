@@ -1,7 +1,7 @@
-
-
 import React from 'react';
-import {DotsHorizontalIcon} from "@heroicons/react/outline";
+import {BookmarkIcon, ChatIcon, DotsHorizontalIcon, HeartIcon, PaperAirplaneIcon} from "@heroicons/react/outline";
+
+import {HeartIcon as HeartIconFilled} from '@heroicons/react/solid'
 
 function Post({id, username, userImg, caption, img}: any) {
     return (
@@ -17,10 +17,22 @@ function Post({id, username, userImg, caption, img}: any) {
             <img src={img} className='object-cover w-full' alt=''/>
 
             {/*  Button  */}
+            <div className='flex justify-between px-4 pt-4'>
+                <div className='flex space-x-4'>
+                    <HeartIcon className='btn' />
+                    <ChatIcon className='btn' />
+                    <PaperAirplaneIcon className='btn' />
+                </div>
+
+                <BookmarkIcon className='btn' />
+            </div>
 
 
             {/*  caption  */}
-
+            <p className='p-5 truncate'>
+                <span className='font-bold mr-1'>{username} </span>
+                {caption}
+            </p>
 
             {/*  comments  */}
 
