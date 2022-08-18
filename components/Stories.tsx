@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker';
 import Story from "./Story";
 
 
-function Stories() {
+const Stories = () => {
     const [suggestions, setSuggestions]: any = useState([]);
 
     useEffect(()=> {

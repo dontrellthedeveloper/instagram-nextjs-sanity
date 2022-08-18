@@ -40,7 +40,7 @@ const posts = [
 ]
 
 
-function Posts(props: any) {
+const Posts = (props: any) => {
     return (
         <div>
             {posts.map((post) => (
