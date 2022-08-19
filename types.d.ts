@@ -35,3 +35,11 @@ export interface IUser {
     userName: string;
     image: string;
 }
+
+
+export interface IUser {
+    _id: string;
+    _type: string;
+    userName: string;
+    image: string;
+}

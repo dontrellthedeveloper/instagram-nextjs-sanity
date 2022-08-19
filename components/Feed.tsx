@@ -14,6 +14,7 @@ import {
     HeartIcon,
     PaperAirplaneIcon
 } from "@heroicons/react/outline";
+import Link from "next/link";
 
 interface IProps {
     post: igImage
@@ -25,8 +26,12 @@ const Feed: NextPage<IProps> = ({post}) => {
                 <div className='bg-white my-7 border rounded-sm'>
                     {/* Header */}
                     <div className='flex items-center p-5'>
-                        <img src={post.postedBy?.image} className='rounded-full h-12 w-12 object-contain border p-1 mr-3' alt=""/>
-                        <p className='flex-1 font-bold'>{post.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '}</p>
+                        <Link href={`/profile/${post.postedBy._id}`}>
+                            <img src={post.postedBy?.image} className='cursor-pointer rounded-full h-12 w-12 object-contain border p-1 mr-3' alt=""/>
+                        </Link>
+                        <Link href={`/profile/${post.postedBy._id}`}>
+                        <p className='cursor-pointer flex-1 font-bold'>{post.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '}</p>
+                        </Link>
                         <DotsHorizontalIcon className='h-5'/>
                     </div>
                     {/*  img  */}
