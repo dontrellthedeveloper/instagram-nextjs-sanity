@@ -12,6 +12,7 @@ import Stories from "../../components/Stories";
 import {faker} from "@faker-js/faker";
 import Story from "../../components/Story";
 import Feed from "../../components/Feed";
+import Link from "next/link";
 
 
 
@@ -181,9 +182,11 @@ const Profile = ({ data }: IProps) => {
 
                         {imagesList.length > 0 ? (
                             imagesList.map((post: igImage, idx: number) => (
-
+                                <Link href={`/detail/${post._id}`}>
                                 <div key={idx} className="relative group">
-                                    <img src={post?.image?.asset.url}  />
+
+                                        <img src={post?.image?.asset.url}  />
+
 
                                     <div className="cursor-pointer absolute bottom-0 left-0 bg-black/[.2] [#414a4ccc] z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
                                         <p className="flex items-center text-white font-bold">
@@ -222,7 +225,7 @@ const Profile = ({ data }: IProps) => {
                                         </p>
                                     </div>
                                 </div>
-
+                                </Link>
 
                             ))
                         ) : (
