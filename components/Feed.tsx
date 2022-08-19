@@ -21,15 +21,7 @@ interface IProps {
 
 const Feed: NextPage<IProps> = ({post}) => {
     return (
-        <main className='grid grid-cols-1 md:grid-cols-2 md:max-w-2xl xl:grid-cols-3 xl:max-w-4xl mx-auto'>
-            <section className='col-span-2'>
-                {/*  Stories  */}
-                <Stories/>
-                {/*  Posts  */}
-                {/*<Posts/>*/}
-
-
-
+            <>
                 <div className='bg-white my-7 border rounded-sm'>
                     {/* Header */}
                     <div className='flex items-center p-5'>
@@ -38,7 +30,7 @@ const Feed: NextPage<IProps> = ({post}) => {
                         <DotsHorizontalIcon className='h-5'/>
                     </div>
                     {/*  img  */}
-                    <img src={post.image.asset.url} className='object-cover w-full' alt=''/>
+                    <img src={post.image?.asset?.url} className='object-cover w-full' alt=''/>
                     {/*  Button  */}
                     <div className='flex justify-between px-4 pt-4'>
                         <div className='flex space-x-4'>
@@ -62,17 +54,14 @@ const Feed: NextPage<IProps> = ({post}) => {
                     </form>
                 </div>
 
-            </section>
 
 
 
-            <section className='hidden xl:inline-grid md:col-span-1'>
-                <div className='fixed t-20'>
-                    <MiniProfile />
-                    <Suggestions />
-                </div>
-            </section>
-        </main>
+
+
+            </>
+
+
     );
 }
 

@@ -7,6 +7,10 @@ import NoResults from '../components/NoResults';
 import axios from 'axios';
 import { igImage } from '../types';
 import Modal from "../components/Modal";
+import Stories from "../components/Stories";
+import React from "react";
+import MiniProfile from "../components/MiniProfile";
+import Suggestions from "../components/Suggestions";
 
 interface IProps {
     images: igImage[];
@@ -23,13 +27,27 @@ const Home = ({images}: IProps) => {
             {/* Feed */}
 
             {/*<div className='flex flex-col gap-10 videos h-full'>*/}
-            <div>
-                {images.length
-                    ? images?.map((image: igImage) => (
-                        <Feed post={image} key={image._id} />
-                    ))
-                    : <NoResults text={`No Videos`} />}
-            </div>
+            <main className='grid grid-cols-1 md:grid-cols-2 md:max-w-2xl xl:grid-cols-3 xl:max-w-4xl mx-auto'>
+
+
+                <section className='col-span-2'>
+                    <Stories/>
+                    {images.length
+                        ? images?.map((image: igImage) => (
+                            <Feed post={image} key={image._id} />
+                        ))
+                        : <NoResults text={`No Videos`} />}
+                </section>
+
+
+                <section className='hidden xl:inline-grid md:col-span-1'>
+                    <div className='fixed t-20'>
+                        <MiniProfile />
+                        <Suggestions />
+                    </div>
+                </section>
+            </main>
+
 
             {/*<Feed/>*/}
 
