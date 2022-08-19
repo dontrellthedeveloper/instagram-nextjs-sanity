@@ -35,7 +35,9 @@ const Feed: NextPage<IProps> = ({post}) => {
                         <DotsHorizontalIcon className='h-5'/>
                     </div>
                     {/*  img  */}
-                    <img src={post.image?.asset?.url} className='object-cover w-full' alt=''/>
+                    <Link href={`/detail/${post._id}`}>
+                        <img src={post.image?.asset?.url} className='object-cover w-full' alt=''/>
+                    </Link>
                     {/*  Button  */}
                     <div className='flex justify-between px-4 pt-4'>
                         <div className='flex space-x-4'>

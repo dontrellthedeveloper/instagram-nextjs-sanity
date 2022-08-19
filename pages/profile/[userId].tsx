@@ -11,20 +11,41 @@ import Header from "../../components/Header";
 import Stories from "../../components/Stories";
 import {faker} from "@faker-js/faker";
 import Story from "../../components/Story";
+import Feed from "../../components/Feed";
 
 
 
 interface IProps {
     data: {
         user: IUser;
-        userVideos: igImage[];
-        // userLikedVideos: Video[];
+        userImages: igImage[];
+        userLikedImages: igImage[];
     };
 }
 
 
 
 const Profile = ({ data }: IProps) => {
+    const [showUserImages, setShowUserImages] = useState<Boolean>(true);
+    const [imagesList, setImagesList] = useState<igImage[]>([]);
+
+    const { user, userImages, userLikedImages } = data;
+    const videos = showUserImages ? 'border-b-2 border-black' : 'text-gray-400';
+    const liked = !showUserImages ? 'border-b-2 border-black' : 'text-gray-400';
+
+    useEffect(() => {
+        const fetchVideos = async () => {
+            if (showUserImages) {
+                setImagesList(userImages);
+            } else {
+                setImagesList(userLikedImages);
+            }
+        };
+
+        fetchVideos();
+    }, [showUserImages, userLikedImages, userImages]);
+
+
 
     const [suggestions, setSuggestions]: any = useState([]);
 
@@ -72,7 +93,8 @@ const Profile = ({ data }: IProps) => {
                             <img
                                 className="rounded-full h-40 w-40 flex"
                                 // alt={`${fullName} profile picture`}
-                                src={`https://i.ibb.co/KFhK5zL/dontrell-professional.jpg`}
+                                // src={`https://i.ibb.co/KFhK5zL/dontrell-professional.jpg`}
+                                src={user.image}
                                 // onError={(e) => {
                                 //     e.target.src = DEFAULT_IMAGE_PATH;
                                 // }}
@@ -83,7 +105,7 @@ const Profile = ({ data }: IProps) => {
                     </div>
                     <div className="flex items-center justify-center flex-col col-span-2">
                         <div className="container flex items-center">
-                            <p className="text-2xl mr-4">Test</p>
+                            <p className="text-2xl mr-4">{user.userName}</p>
                             {/*{activeBtnFollow && isFollowingProfile === null ? (*/}
                             {/*    <Skeleton count={1} width={80} height={32} />*/}
                             {/*) : (*/}
@@ -154,368 +176,105 @@ const Profile = ({ data }: IProps) => {
                         {/*    ? new Array(12).fill(0).map((_, i) => <Skeleton key={i} width={320} height={400} />)*/}
                         {/*    : photos.length > 0*/}
                         {/*        ? photos.map((photo) => (*/}
-                                    <div className="relative group">
-                                        <img src='https://i.ibb.co/MDFQ77v/Screen-Shot-2022-08-15-at-1-45-34-PM.jpg'  />
 
-                                        <div className="cursor-pointer absolute bottom-0 left-0 bg-black/[.2] [#414a4ccc] z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
-                                            <p className="flex items-center text-white font-bold">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                    className="w-8 mr-2"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                                {/*{photo.likes.length}*/}
-                                                20
-                                            </p>
 
-                                            <p className="flex items-center text-white font-bold">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                    className="w-8 mr-2"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                                {/*{photo.comments.length}*/}
 
-                                                12
-                                            </p>
-                                        </div>
+                        {imagesList.length > 0 ? (
+                            imagesList.map((post: igImage, idx: number) => (
+
+                                <div key={idx} className="relative group">
+                                    <img src={post?.image?.asset.url}  />
+
+                                    <div className="cursor-pointer absolute bottom-0 left-0 bg-black/[.2] [#414a4ccc] z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
+                                        <p className="flex items-center text-white font-bold">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                                className="w-8 mr-2"
+                                            >
+                                                <path
+                                                    fillRule="evenodd"
+                                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                                    clipRule="evenodd"
+                                                />
+                                            </svg>
+                                            {/*{photo.likes.length}*/}
+                                            20
+                                        </p>
+
+                                        <p className="flex items-center text-white font-bold">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                                className="w-8 mr-2"
+                                            >
+                                                <path
+                                                    fillRule="evenodd"
+                                                    d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                                                    clipRule="evenodd"
+                                                />
+                                            </svg>
+                                            {/*{photo.comments.length}*/}
+
+                                            12
+                                        </p>
                                     </div>
-                        <div className="relative group">
-                            <img src='https://i.ibb.co/MDFQ77v/Screen-Shot-2022-08-15-at-1-45-34-PM.jpg'  />
+                                </div>
 
-                            <div className="cursor-pointer absolute bottom-0 left-0 bg-black/[.2] [#414a4ccc] z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-2"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.likes.length}*/}
-                                    20
-                                </p>
 
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-2"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.comments.length}*/}
+                            ))
+                        ) : (
+                            // <NoResults
+                            //     text={`No ${showUserVideos ? '' : 'Liked'} Videos Yet`}
+                            // />
+                            <div>
 
-                                    12
-                                </p>
                             </div>
-                        </div>
-                        <div className="relative group">
-                            <img src='https://i.ibb.co/MDFQ77v/Screen-Shot-2022-08-15-at-1-45-34-PM.jpg'  />
-
-                            <div className="cursor-pointer absolute bottom-0 left-0 bg-black/[.2] [#414a4ccc] z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-2"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.likes.length}*/}
-                                    20
-                                </p>
-
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-2"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.comments.length}*/}
-
-                                    12
-                                </p>
-                            </div>
-                        </div>
-                        <div className="relative group">
-                            <img src='https://i.ibb.co/MDFQ77v/Screen-Shot-2022-08-15-at-1-45-34-PM.jpg'  />
-
-                            <div className="cursor-pointer absolute bottom-0 left-0 bg-black/[.2] [#414a4ccc] z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-2"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.likes.length}*/}
-                                    20
-                                </p>
-
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-2"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.comments.length}*/}
-
-                                    12
-                                </p>
-                            </div>
-                        </div>
-                        <div className="relative group">
-                            <img src='https://i.ibb.co/MDFQ77v/Screen-Shot-2022-08-15-at-1-45-34-PM.jpg'  />
-
-                            <div className="cursor-pointer absolute bottom-0 left-0 bg-black/[.2] [#414a4ccc] z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-2"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.likes.length}*/}
-                                    20
-                                </p>
-
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-2"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.comments.length}*/}
-
-                                    12
-                                </p>
-                            </div>
-                        </div>
+                        )}
 
 
-                        <div className="relative group">
-                            <img src='https://i.ibb.co/MDFQ77v/Screen-Shot-2022-08-15-at-1-45-34-PM.jpg'  />
+                        {/*<div className="relative group">*/}
+                        {/*    <img src='https://i.ibb.co/MDFQ77v/Screen-Shot-2022-08-15-at-1-45-34-PM.jpg'  />*/}
 
-                            <div className="absolute bottom-0 left-0 bg-gray-200 z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-4"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.likes.length}*/}
-                                    20
-                                </p>
+                        {/*    <div className="absolute bottom-0 left-0 bg-gray-200 z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">*/}
+                        {/*        <p className="flex items-center text-white font-bold">*/}
+                        {/*            <svg*/}
+                        {/*                xmlns="http://www.w3.org/2000/svg"*/}
+                        {/*                viewBox="0 0 20 20"*/}
+                        {/*                fill="currentColor"*/}
+                        {/*                className="w-8 mr-4"*/}
+                        {/*            >*/}
+                        {/*                <path*/}
+                        {/*                    fillRule="evenodd"*/}
+                        {/*                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"*/}
+                        {/*                    clipRule="evenodd"*/}
+                        {/*                />*/}
+                        {/*            </svg>*/}
+                        {/*            /!*{photo.likes.length}*!/*/}
+                        {/*            20*/}
+                        {/*        </p>*/}
 
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-4"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.comments.length}*/}
+                        {/*        <p className="flex items-center text-white font-bold">*/}
+                        {/*            <svg*/}
+                        {/*                xmlns="http://www.w3.org/2000/svg"*/}
+                        {/*                viewBox="0 0 20 20"*/}
+                        {/*                fill="currentColor"*/}
+                        {/*                className="w-8 mr-4"*/}
+                        {/*            >*/}
+                        {/*                <path*/}
+                        {/*                    fillRule="evenodd"*/}
+                        {/*                    d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"*/}
+                        {/*                    clipRule="evenodd"*/}
+                        {/*                />*/}
+                        {/*            </svg>*/}
+                        {/*            /!*{photo.comments.length}*!/*/}
 
-                                    12
-                                </p>
-                            </div>
-                        </div>
-                        <div className="relative group">
-                            <img src='https://i.ibb.co/MDFQ77v/Screen-Shot-2022-08-15-at-1-45-34-PM.jpg'  />
-
-                            <div className="absolute bottom-0 left-0 bg-gray-200 z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-4"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.likes.length}*/}
-                                    20
-                                </p>
-
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-4"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.comments.length}*/}
-
-                                    12
-                                </p>
-                            </div>
-                        </div>
-                        <div className="relative group">
-                            <img src='https://i.ibb.co/MDFQ77v/Screen-Shot-2022-08-15-at-1-45-34-PM.jpg'  />
-
-                            <div className="absolute bottom-0 left-0 bg-gray-200 z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-4"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.likes.length}*/}
-                                    20
-                                </p>
-
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-4"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.comments.length}*/}
-
-                                    12
-                                </p>
-                            </div>
-                        </div>
-                        <div className="relative group">
-                            <img src='https://i.ibb.co/MDFQ77v/Screen-Shot-2022-08-15-at-1-45-34-PM.jpg'  />
-
-                            <div className="absolute bottom-0 left-0 bg-gray-200 z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-4"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.likes.length}*/}
-                                    20
-                                </p>
-
-                                <p className="flex items-center text-white font-bold">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        className="w-8 mr-4"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                    {/*{photo.comments.length}*/}
-
-                                    12
-                                </p>
-                            </div>
-                        </div>
+                        {/*            12*/}
+                        {/*        </p>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
 
                                 {/*))*/}
                                 {/*: null}*/}
