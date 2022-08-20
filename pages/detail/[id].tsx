@@ -30,6 +30,9 @@ const Detail = ({ postDetails }: IProps) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const router = useRouter();
 
+    const [comment, setComment] = useState<string>('');
+    const [isPostingComment, setIsPostingComment] = useState<boolean>(false);
+
 
 
 
@@ -41,6 +44,26 @@ const Detail = ({ postDetails }: IProps) => {
                 like
             });
             setPost({ ...post, likes: data.likes });
+        }
+    };
+
+
+
+    const addComment = async (e: { preventDefault: () => void }) => {
+        e.preventDefault();
+
+        if (userProfile) {
+            if (comment) {
+                setIsPostingComment(true);
+                const res = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
+                    userId: userProfile._id,
+                    comment,
+                });
+
+                setPost({ ...post, comments: res.data.comments });
+                setComment('');
+                setIsPostingComment(false);
+            }
         }
     };
 
@@ -120,7 +143,8 @@ const Detail = ({ postDetails }: IProps) => {
                         </div>
 
                     <div className='relative w-[1000px] md:w-[900px] lg:w-[700px]'>
-                        <div className='lg:mt-20 mt-10'>
+                        <div className='lg:mt-20 mt-10
+                        '>
                             <Link href={`/profile/${post.postedBy._id}`}>
                                 <div className='flex gap-4 mb-4 bg-white w-full pl-10 cursor-pointer'>
                                     <Image
@@ -151,11 +175,11 @@ const Detail = ({ postDetails }: IProps) => {
                                 />}
                             </div>
                             <Comments
-                                // comment={comment}
-                                // setComment={setComment}
-                                // addComment={addComment}
-                                // comments={post.comments}
-                                // isPostingComment={isPostingComment}
+                                comment={comment}
+                                setComment={setComment}
+                                addComment={addComment}
+                                comments={post.comments}
+                                isPostingComment={isPostingComment}
                             />
                         </div>
                     </div>
