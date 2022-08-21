@@ -37,7 +37,8 @@ const Home = ({images}: IProps) => {
                         ? images?.map((image: igImage) => (
                             <Feed post={image} key={image._id} />
                         ))
-                        : <NoResults text={`No Videos`} />}
+                        : <NoResults text={`No Videos`} />
+                    }
                 </section>
 
 
