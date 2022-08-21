@@ -11,6 +11,7 @@ import Stories from "../components/Stories";
 import React from "react";
 import MiniProfile from "../components/MiniProfile";
 import Suggestions from "../components/Suggestions";
+import SuggestedAccounts from "../components/SuggestedAccounts";
 
 interface IProps {
     images: igImage[];
@@ -43,7 +44,7 @@ const Home = ({images}: IProps) => {
                 <section className='hidden xl:inline-grid md:col-span-1'>
                     <div className='fixed t-20'>
                         <MiniProfile />
-                        <Suggestions />
+                        <SuggestedAccounts/>
                     </div>
                 </section>
             </main>

@@ -51,7 +51,7 @@ const Profile = ({ data }: IProps) => {
     const [suggestions, setSuggestions]: any = useState([]);
 
     useEffect(()=> {
-        const suggestions = [...Array(7)].map((_, i) => ({
+        const suggestions = [...Array(10)].map((_, i) => ({
             // ...faker.helpers.contextualCard(),
             id: i,
             name: faker.name.firstName(),
@@ -156,15 +156,63 @@ const Profile = ({ data }: IProps) => {
 
                 </div>
 
-                <div className='flex justify-between px-10 pt-5 mt-8 rounded-sm'>
-                    {suggestions.map((profile: any) => (
-                        <div>
-                            <img className='h-20 w-20 rounded-full p-[1.5px] border-red-500 border-2 object-contain cursor-pointer hover:scale-110
-                            transition transform duration-200 ease-out' src={profile.avatar} alt=""/>
-                            <p className='text-xs w-14 truncate text-center'>{profile.username}</p>
-                        </div>
 
-                    ))}
+                {/*<div className='flex space-x-8 p-6 mt-8 rounded-sm overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200'>*/}
+                {/*    {suggestions.map((profile: any) => (*/}
+                {/*        <Story key={profile.id} img={profile.avatar} username={profile.username}*/}
+                {/*        />*/}
+                {/*    ))}*/}
+
+                {/*</div>*/}
+
+
+
+                {/*<div className='flex px-10 pt-5 mt-8 rounded-sm overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 space-x-10'>*/}
+                {/*    {suggestions.map((profile: any) => (*/}
+                {/*        <div>*/}
+                {/*            <img className='h-20 w-20 rounded-full p-[1.5px] border-red-500 border-2 object-contain cursor-pointer hover:scale-110*/}
+                {/*            transition transform duration-200 ease-out' src={profile.avatar} alt=""/>*/}
+                {/*            <p className='text-xs w-14 truncate text-center'>{profile.username}</p>*/}
+                {/*        </div>*/}
+
+                {/*    ))}*/}
+
+                {/*</div>*/}
+
+
+                <div className='flex space-x-8 p-6 mt-8 rounded-sm overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200'>
+                    {/*{suggestions.map((profile: any) => (*/}
+                    {/*    // <Story key={profile.id} img={profile.avatar} username={profile.username}*/}
+                    {/*    // />*/}
+
+                    {/*    <div key={profile.id}>*/}
+                    {/*    <img className='h-14 w-14 rounded-full p-[1.5px] border-red-500 border-2 object-contain cursor-pointer hover:scale-110*/}
+                    {/*        transition transform duration-200 ease-out' src={profile.avatar} alt=""/>*/}
+                    {/*    <p className='text-xs w-14 truncate text-center'>{profile.username}</p>*/}
+                    {/*    </div>*/}
+                    {/*))}*/}
+
+
+
+
+                    {imagesList.length > 0 ? (
+                        imagesList.map((post: igImage, idx: number) => (
+                            <div key={idx}>
+                                <img className='h-14 w-14 rounded-full p-[1.5px] border-red-500 border-2 object-contain cursor-pointer hover:scale-110
+                            transition transform duration-200 ease-out' src={post?.image?.asset.url} alt=""/>
+                                <p className='text-xs w-14 truncate text-center'>{user.userName}</p>
+                            </div>
+
+                        ))
+                    ) : (
+                        // <NoResults
+                        //     text={`No ${showUserVideos ? '' : 'Liked'} Videos Yet`}
+                        // />
+                        <div>
+
+                        </div>
+                    )}
+
 
                 </div>
 

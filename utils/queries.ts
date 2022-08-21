@@ -8,6 +8,7 @@ export const allPostsQuery = () => {
           url
         }
       },
+      slug,
       userId,
       postedBy->{
         _id,
@@ -90,6 +91,12 @@ likes,
 
 export const singleUserQuery = (userId: string | string[]) => {
   const query = `*[_type == "user" && _id == '${userId}']`;
+
+  return query;
+};
+
+export const singleUserSlugQuery = (userId: string | string[]) => {
+  const query = `*[_type == "user" && slug.current == '${userId}']`;
 
   return query;
 };

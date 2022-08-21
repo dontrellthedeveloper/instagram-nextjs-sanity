@@ -17,6 +17,15 @@ export default {
             },
         },
         {
+            name: 'slug',
+            title: 'User Slug',
+            type: 'slug',
+            options: {
+                source: 'userName',
+                maxLength: 96,
+            },
+        },
+        {
             name: 'userId',
             title: 'UserId',
             type: 'string',

@@ -9,6 +9,15 @@ export default {
             type: 'string',
         },
         {
+            name: 'slug',
+            title: 'Handle',
+            type: 'slug',
+            options: {
+                source: 'userName',
+                maxLength: 96,
+            },
+        },
+        {
             name: 'image',
             title: 'Image',
             type: 'string',

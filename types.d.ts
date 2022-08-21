@@ -7,16 +7,28 @@ export interface igImage {
         };
     };
     _id: string;
+    slug: {
+        _type: string;
+        current: string;
+    }
     postedBy: {
         _id: string;
         userName: string;
         image: string;
+        slug: {
+            type: string
+            current: string
+        }
     };
     likes: {
         postedBy: {
             _id: string;
             userName: string;
             image: string;
+            slug: {
+                type: string
+                current: string
+            }
         };
     }[];
     comments: {
@@ -34,6 +46,10 @@ export interface IUser {
     _type: string;
     userName: string;
     image: string;
+    slug: {
+        _type: string;
+        current: string;
+    }
 }
 
 
@@ -42,4 +58,8 @@ export interface IUser {
     _type: string;
     userName: string;
     image: string;
+    slug: {
+        _type: string;
+        current: string;
+    }
 }
