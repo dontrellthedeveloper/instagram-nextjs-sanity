@@ -9,10 +9,13 @@ import { BASE_URL } from '../../utils';
 
 import Header from "../../components/Header";
 import Stories from "../../components/Stories";
-import {faker} from "@faker-js/faker";
+
 import Story from "../../components/Story";
 import Feed from "../../components/Feed";
 import Link from "next/link";
+import LikeButton from "../../components/LikeButton";
+import useAuthStore from "../../store/authStore";
+import UserImageCard from "../../components/UserImageCard";
 
 
 
@@ -21,18 +24,27 @@ interface IProps {
         user: IUser;
         userImages: igImage[];
         userLikedImages: igImage[];
+
     };
+    postDetails: igImage;
 }
+
+
 
 
 
 const Profile = ({ data }: IProps) => {
     const [showUserImages, setShowUserImages] = useState<Boolean>(true);
     const [imagesList, setImagesList] = useState<igImage[]>([]);
+    const { userProfile, allUsers }: any = useAuthStore();
 
     const { user, userImages, userLikedImages } = data;
-    const videos = showUserImages ? 'border-b-2 border-black' : 'text-gray-400';
+    const images = showUserImages ? 'border-b-2 border-black' : 'text-gray-400';
     const liked = !showUserImages ? 'border-b-2 border-black' : 'text-gray-400';
+
+
+
+
 
     useEffect(() => {
         const fetchVideos = async () => {
@@ -46,41 +58,6 @@ const Profile = ({ data }: IProps) => {
         fetchVideos();
     }, [showUserImages, userLikedImages, userImages]);
 
-
-
-    const [suggestions, setSuggestions]: any = useState([]);
-
-    useEffect(()=> {
-        const suggestions = [...Array(10)].map((_, i) => ({
-            // ...faker.helpers.contextualCard(),
-            id: i,
-            name: faker.name.firstName(),
-            username: faker.internet.userName(),
-            avatar: faker.internet.avatar(),
-            email: faker.internet.email(),
-            dob: faker.date.birthdate(),
-            phone: faker.phone.number(),
-            address: {
-                street: faker.address.streetAddress(false),
-                suite: faker.address.secondaryAddress(),
-                city: faker.address.city(),
-                zipcode: faker.address.zipCode(),
-                state: faker.address.state(),
-                geo: faker.address.nearbyGPSCoordinate()
-            },
-            website: faker.internet.domainName(),
-            company: {
-                name: faker.company.companyName(),
-                catchPhrase: faker.company.catchPhraseNoun(),
-                bs: faker.company.bs()
-            }
-        }));
-
-        console.log(suggestions);
-        setSuggestions(suggestions);
-    },[])
-
-
     return (
         <div className="bg-gray-50 h-screen overflow-y-scroll scrollbar-hide">
             <Header/>
@@ -92,7 +69,7 @@ const Profile = ({ data }: IProps) => {
                     <div className="container flex justify-center items-center">
                         {/*{profileUsername ? (*/}
                             <img
-                                className="rounded-full h-40 w-40 flex"
+                                className="rounded-full h-36 w-36 flex p-[3.5px] border-red-500 border-2"
                                 // alt={`${fullName} profile picture`}
                                 // src={`https://i.ibb.co/KFhK5zL/dontrell-professional.jpg`}
                                 src={user.image}
@@ -230,50 +207,10 @@ const Profile = ({ data }: IProps) => {
 
                         {imagesList.length > 0 ? (
                             imagesList.map((post: igImage, idx: number) => (
-                                <Link href={`/detail/${post._id}`}>
-                                <div key={idx} className="relative group">
 
-                                        <img src={post?.image?.asset.url}  />
+                                    <UserImageCard post={post} idx={idx}/>
 
 
-                                    <div className="cursor-pointer absolute bottom-0 left-0 bg-black/[.2] [#414a4ccc] z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">
-                                        <p className="flex items-center text-white font-bold">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                                className="w-8 mr-2"
-                                            >
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                    clipRule="evenodd"
-                                                />
-                                            </svg>
-                                            {/*{photo.likes.length}*/}
-                                            20
-                                        </p>
-
-                                        <p className="flex items-center text-white font-bold">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                                className="w-8 mr-2"
-                                            >
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                                    clipRule="evenodd"
-                                                />
-                                            </svg>
-                                            {/*{photo.comments.length}*/}
-
-                                            12
-                                        </p>
-                                    </div>
-                                </div>
-                                </Link>
 
                             ))
                         ) : (

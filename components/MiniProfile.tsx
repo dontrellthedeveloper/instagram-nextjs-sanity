@@ -9,12 +9,17 @@ const MiniProfile = () => {
         <div>
             {userProfile ? (
                 <div className='flex items-center justify-between mt-14 ml-10'>
-                    <img className='rounded-full border p-[2px] w-16 h-16' src={userProfile.image} alt=''/>
+                    <Link href={`/profile/${userProfile._id}`}>
+                        <img className='rounded-full border p-[2px] w-16 h-16 cursor-pointer' src={userProfile.image} alt=''/>
+                    </Link>
 
-                    <div className='flex-1 mx-4'>
-                        <h2 className='font-bold'> {userProfile.userName.replace(/\s+/g, '').toLowerCase()}{' '}</h2>
-                        <h3 className='text-sm text-gray-400'>Welcome to Instagram</h3>
-                    </div>
+                    <Link href={`/profile/${userProfile._id}`}>
+
+                        <div className='flex-1 mx-4 cursor-pointer'>
+                            <h2 className='font-bold'> {userProfile.userName.replace(/\s+/g, '').toLowerCase()}{' '}</h2>
+                            <h3 className='text-sm text-gray-400'>Welcome to Instagram</h3>
+                        </div>
+                    </Link>
 
                     <button className='text-blue-400 text-sm font-semibold'>Sign Out</button>
                 </div>
@@ -27,5 +32,6 @@ const MiniProfile = () => {
 }
 
 import {createOrGetUser} from "../utils";
+import Link from "next/link";
 
 export default MiniProfile;

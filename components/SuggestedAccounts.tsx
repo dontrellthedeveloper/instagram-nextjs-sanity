@@ -27,7 +27,7 @@ const SuggestedAccounts = () => {
                 </div>
 
                 {
-                    allUsers?.slice(0, 6).map((user: IUser) => (
+                    allUsers?.slice(0, 10).map((user: IUser) => (
 
                             <div key={user._id} className='flex items-center justify-between mt-3'>
                                 <Link href={`/profile/${user._id}`} >

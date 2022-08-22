@@ -30,7 +30,7 @@ const LikeButton = ({ handleLike, handleDislike, likes}: IProps) => {
         <>
                     {alreadyLiked ? (
                         // <div className='bg-primary bg-gray-300 rounded-full p-2 md:p-4 text-[#F51997]' onClick={handleDislike} >
-                             <HeroIconSolid onClick={handleDislike} className='btn text-[#f87c7c]' />
+                             <HeroIconSolid onClick={handleDislike} className='btn text-[#f04c54]' />
                         // </div>
                      ) : (
                          // <div className='bg-primary bg-gray-300 rounded-full p-2 md:p-4 ' onClick={handleLike} >
