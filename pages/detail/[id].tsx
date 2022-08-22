@@ -44,19 +44,6 @@ const Detail = ({ postDetails }: IProps) => {
 
 
 
-    const handleLike = async (like: boolean) => {
-        if (userProfile) {
-            const {data} = await axios.put(`${BASE_URL}/api/like`, {
-                userId: userProfile._id,
-                postId: post._id,
-                like
-            });
-            setPost({ ...post, likes: data.likes });
-        }
-    };
-
-
-
     const addComment = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
 
@@ -74,6 +61,19 @@ const Detail = ({ postDetails }: IProps) => {
             }
         }
     };
+
+    const handleLike = async (like: boolean) => {
+        if (userProfile) {
+            const {data} = await axios.put(`${BASE_URL}/api/like`, {
+                userId: userProfile._id,
+                postId: post._id,
+                like
+            });
+            setPost({ ...post, likes: data.likes });
+        }
+    };
+
+
 
 
 

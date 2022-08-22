@@ -190,8 +190,8 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                     {imagesList.length > 0 ? (
                         imagesList.map((post: igImage, idx: number) => (
                             <div key={idx}>
-                                <img className='h-14 w-14 rounded-full p-[1.5px] border-red-500 border-2 object-contain cursor-pointer hover:scale-110
-                            transition transform duration-200 ease-out' src={post?.image?.asset.url} alt=""/>
+                                <img className='h-20 w-20 rounded-full p-[1.5px] border-red-500 border-2 object-contain cursor-pointer hover:scale-110
+                            transition transform duration-200 ease-out mr-5' src={post?.image?.asset.url} alt=""/>
                                 <p className='text-xs w-14 truncate text-center'>{user.userName}</p>
                             </div>
 
@@ -211,7 +211,7 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                 {/*<Stories/>*/}
 
 
-                <div className="h-16 border-t border-gray-primary mt-12 mb-12 pt-4">
+                <div className="h-16 border-t border-gray-primary mt-4 mb-12 pt-4">
                     <div className="grid grid-cols-3 pb-8 gap-8 mt-4 mb-12">
                         {/*{!photos*/}
                         {/*    ? new Array(12).fill(0).map((_, i) => <Skeleton key={i} width={320} height={400} />)*/}
