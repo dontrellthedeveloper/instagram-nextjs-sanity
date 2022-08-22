@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import Image from 'next/image';
 import { GoVerified } from 'react-icons/go';
 import axios from 'axios';
+import {NextPage} from 'next';
 
 import NoResults from '../../components/NoResults';
 import { IUser, igImage } from '../../types';
@@ -27,13 +28,27 @@ interface IProps {
 
     };
     postDetails: igImage;
+
+    isPostingComment: Boolean;
+    comment: string;
+    setComment: Dispatch<SetStateAction<string>>;
+    addComment: (e: React.FormEvent) => void;
+    comments: any[];
+}
+
+
+interface IComment {
+    comment: string;
+    length?: number;
+    _key: string;
+    postedBy: { _ref?: string; _id?: string };
 }
 
 
 
 
 
-const Profile = ({ data }: IProps) => {
+const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment, addComment, comments }) => {
     const [showUserImages, setShowUserImages] = useState<Boolean>(true);
     const [imagesList, setImagesList] = useState<igImage[]>([]);
     const { userProfile, allUsers }: any = useAuthStore();
@@ -208,7 +223,15 @@ const Profile = ({ data }: IProps) => {
                         {imagesList.length > 0 ? (
                             imagesList.map((post: igImage, idx: number) => (
 
-                                    <UserImageCard post={post} idx={idx}/>
+                                    <UserImageCard
+                                        isPostingComment={isPostingComment}
+                                        comment={comment}
+                                        setComment={setComment}
+                                        addComment={addComment}
+                                        comments={comments}
+                                        post={post}
+                                        idx={idx}
+                                    />
 
 
 

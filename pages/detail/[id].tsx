@@ -120,34 +120,9 @@ const Detail = ({ postDetails }: IProps) => {
                                     {/*h-[60vh]*/}
                                     '
                                 >
-                                    {/*<video*/}
-                                    {/*    ref={videoRef}*/}
-                                    {/*    onClick={onVideoClick}*/}
-                                    {/*    loop*/}
-                                    {/*    src={post?.video?.asset.url}*/}
-                                    {/*    className=' h-full cursor-pointer'*/}
-                                    {/*></video>*/}
                                     <img src={post.image?.asset?.url} className='object-cover h-full w-[750px] h-[750px]' alt=''/>
                                 </div>
-                                {/*<div className='absolute top-[45%] left-[40%]  cursor-pointer'>*/}
-                                {/*    {!playing && (*/}
-                                {/*        <button onClick={onVideoClick}>*/}
-                                {/*            <BsFillPlayFill className='text-white text-6xl lg:text-8xl' />*/}
-                                {/*        </button>*/}
-                                {/*    )}*/}
-                                {/*</div>*/}
                             </div>
-                            {/*<div className='absolute bottom-5 lg:bottom-10 right-5 lg:right-10  cursor-pointer'>*/}
-                            {/*    {isVideoMuted ? (*/}
-                            {/*        <button onClick={() => setIsVideoMuted(false)}>*/}
-                            {/*            <HiVolumeOff className='text-white text-3xl lg:text-4xl' />*/}
-                            {/*        </button>*/}
-                            {/*    ) : (*/}
-                            {/*        <button onClick={() => setIsVideoMuted(true)}>*/}
-                            {/*            <HiVolumeUp className='text-white text-3xl lg:text-4xl' />*/}
-                            {/*        </button>*/}
-                            {/*    )}*/}
-                            {/*</div>*/}
                         </div>
 
                         <div className='relative w-[500px] md:w-[500px] lg:w-[500px]'>
