@@ -117,7 +117,7 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                     </div>
                     <div className="flex items-center justify-center flex-col col-span-2">
                         <div className="container flex items-center">
-                            <p className="text-2xl mr-4">{userDetails.userName}</p>
+                            <p className="text-2xl mr-4">{userDetails.userName.toLowerCase()}</p>
 
                             {userProfile && (
                                 <FollowButton
@@ -134,15 +134,29 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                             {/*) : (*/}
                                 <>
                                     <p className="mr-10">
-                                        <span className="font-bold"> 12</span> photos
+                                        {userImages?.length == 1 ? (
+                                            <>
+                                                <span className="font-bold"> {userImages?.length || 0}</span> photo
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span className="font-bold"> {userImages?.length || 0}</span> photos
+                                            </>
+                                        )}
+
+
                                     </p>
                                     <p className="mr-10">
-                                        <span className="font-bold">
-                                            {userDetails.followers?.length || 0}
-                                            </span>
-                                        {` `}
-                                        {/*{followerCount === 1 ? `follower` : `followers`}*/}
-                                        followers
+                                        {userDetails.followers?.length == 1 ? (
+                                            <>
+                                                <span className="font-bold"> {userDetails.followers?.length || 0}</span> follower
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span className="font-bold"> {userDetails.followers?.length || 0}</span> followers
+                                            </>
+                                        )}
+                                        {/*<span className="font-bold">{userDetails.followers?.length || 0} </span>{` `}followers*/}
                                     </p>
                                     <p className="mr-10">
                                         <span className="font-bold">
@@ -154,7 +168,13 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                             {/*)}*/}
                         </div>
                         <div className="container mt-4">
-                            <p className="font-medium">dontrell dev</p>
+                            <p className="font-bold">{userDetails.fullName}</p>
+                        </div>
+                        <div className="container mt-4">
+                            <p className="text-sm">{userDetails.description}</p>
+                        </div>
+                        <div className="container mt-4">
+                            <p className="text-blue-900 font-medium">{userDetails.link}</p>
                         </div>
                     </div>
 

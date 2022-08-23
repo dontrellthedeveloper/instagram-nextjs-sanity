@@ -36,8 +36,8 @@ const SuggestedAccounts = () => {
                                 </Link>
                                 <Link href={`/profile/${user._id}`} >
                                         <div className='flex-1 ml-4 cursor-pointer'>
-                                            <h2 className='font-semibold text-sm'>{user.userName.replace(/\s+/g, '')}{' '}</h2>
-                                            <h3 className='text-xs text-gray-400'> {user.userName}</h3>
+                                            <h2 className='font-semibold text-sm'>{user.userName.toLowerCase().replace(/\s+/g, '')}{' '}</h2>
+                                            <h3 className='text-xs text-gray-400'> {user.fullName}</h3>
                                         </div>
                                 </Link>
 

@@ -53,6 +53,9 @@ export interface IUser {
     _id: string;
     _type: string;
     userName: string;
+    fullName: string;
+    description: string;
+    link: string;
     image: string;
     followers: {
         postedBy: {

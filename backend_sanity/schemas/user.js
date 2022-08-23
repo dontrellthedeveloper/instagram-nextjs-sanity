@@ -8,15 +8,21 @@ export default {
             title: 'UserName',
             type: 'string',
         },
-        // {
-        //     name: 'slug',
-        //     title: 'Handle',
-        //     type: 'slug',
-        //     options: {
-        //         source: 'userName',
-        //         maxLength: 96,
-        //     },
-        // },
+        {
+            name: 'fullName',
+            title: 'Full Name',
+            type: 'string',
+        },
+        {
+            name: 'description',
+            title: 'Description',
+            type: 'text',
+        },
+        {
+            name: 'link',
+            title: 'Link',
+            type: 'string',
+        },
         {
             name: 'image',
             title: 'Image',
