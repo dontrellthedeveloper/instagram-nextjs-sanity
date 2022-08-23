@@ -85,6 +85,7 @@ const Feed: NextPage<IProps> = ({post, comments}) => {
                 <div className='bg-white my-7 border rounded-sm'>
                     {/* Header */}
                     <div className='flex items-center p-5'>
+
                         <Link href={`/profile/${postCard.postedBy._id}`}>
                             <img src={postCard.postedBy?.image} className='cursor-pointer rounded-full h-12 w-12 object-contain p-[2.5px] border border-red-500 p-1 mr-3' alt=""/>
                         </Link>

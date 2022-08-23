@@ -17,6 +17,7 @@ import Link from "next/link";
 import LikeButton from "../../components/LikeButton";
 import useAuthStore from "../../store/authStore";
 import UserImageCard from "../../components/UserImageCard";
+import FollowButton from "../../components/FollowButton";
 
 
 
@@ -25,7 +26,7 @@ interface IProps {
         user: IUser;
         userImages: igImage[];
         userLikedImages: igImage[];
-
+        userFollowedUser: IUser[]
     };
     postDetails: igImage;
 
@@ -53,7 +54,8 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
     const [imagesList, setImagesList] = useState<igImage[]>([]);
     const { userProfile, allUsers }: any = useAuthStore();
 
-    const { user, userImages, userLikedImages } = data;
+    const { user, userImages, userLikedImages, userFollowedUser } = data;
+    const [userDetails, setUserDetails] = useState(user)
     const images = showUserImages ? 'border-b-2 border-black' : 'text-gray-400';
     const liked = !showUserImages ? 'border-b-2 border-black' : 'text-gray-400';
 
@@ -71,7 +73,24 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
         };
 
         fetchVideos();
-    }, [showUserImages, userLikedImages, userImages]);
+    }, [showUserImages, userLikedImages, userImages, userFollowedUser]);
+
+
+
+
+    const handleFollow = async (follow: boolean)=> {
+        if (userProfile) {
+            const {data } = await axios.put(`${BASE_URL}/api/follow`, {
+                userId: userProfile._id,
+                followId: userDetails._id,
+                follow
+            })
+
+            setUserDetails({ ...userDetails, followers: data.followers})
+        }
+    }
+
+
 
     return (
         <div className="bg-gray-50 h-screen overflow-y-scroll scrollbar-hide">
@@ -87,7 +106,7 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                                 className="rounded-full h-36 w-36 flex p-[3.5px] border-red-500 border-2"
                                 // alt={`${fullName} profile picture`}
                                 // src={`https://i.ibb.co/KFhK5zL/dontrell-professional.jpg`}
-                                src={user.image}
+                                src={userDetails.image}
                                 // onError={(e) => {
                                 //     e.target.src = DEFAULT_IMAGE_PATH;
                                 // }}
@@ -98,26 +117,16 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                     </div>
                     <div className="flex items-center justify-center flex-col col-span-2">
                         <div className="container flex items-center">
-                            <p className="text-2xl mr-4">{user.userName}</p>
-                            {/*{activeBtnFollow && isFollowingProfile === null ? (*/}
-                            {/*    <Skeleton count={1} width={80} height={32} />*/}
-                            {/*) : (*/}
-                            {/*    activeBtnFollow && (*/}
-                                    <button
-                                        className="bg-blue-medium font-bold text-sm rounded text-white w-20 h-8"
-                                        type="button"
-                                        // onClick={handleToggleFollow}
-                                        // onKeyDown={(event) => {
-                                        //     if (event.key === 'Enter') {
-                                        //         handleToggleFollow();
-                                        //     }
-                                        // }}
-                                    >
-                                        {/*{isFollowingProfile ? 'Unfollow' : 'Follow'}*/}
-                                        Follow
-                                    </button>
-                            {/*    )*/}
-                            {/*)}*/}
+                            <p className="text-2xl mr-4">{userDetails.userName}</p>
+
+                            {userProfile && (
+                                <FollowButton
+                                    followers={userDetails.followers}
+                                handleFollow={() => handleFollow(true)}
+                                handleUnfollow={() => handleFollow(false)}
+                                />
+                            )}
+
                         </div>
                         <div className="container flex mt-4">
                             {/*{!followers || !following ? (*/}
@@ -128,13 +137,18 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                                         <span className="font-bold"> 12</span> photos
                                     </p>
                                     <p className="mr-10">
-                                        <span className="font-bold"> 646</span>
+                                        <span className="font-bold">
+                                            {userDetails.followers?.length || 0}
+                                            </span>
                                         {` `}
                                         {/*{followerCount === 1 ? `follower` : `followers`}*/}
                                         followers
                                     </p>
                                     <p className="mr-10">
-                                        <span className="font-bold">23</span> following
+                                        <span className="font-bold">
+                                            {userFollowedUser?.length || 0}
+
+                                        </span> following
                                     </p>
                                 </>
                             {/*)}*/}
@@ -192,7 +206,7 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                             <div key={idx}>
                                 <img className='h-20 w-20 rounded-full p-[1.5px] border-red-500 border-2 object-contain cursor-pointer hover:scale-110
                             transition transform duration-200 ease-out mr-5' src={post?.image?.asset.url} alt=""/>
-                                <p className='text-xs w-14 truncate text-center'>{user.userName}</p>
+                                <p className='text-xs w-14 truncate text-center'>{userDetails.userName}</p>
                             </div>
 
                         ))

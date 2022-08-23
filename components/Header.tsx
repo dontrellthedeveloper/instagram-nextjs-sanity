@@ -94,7 +94,9 @@ const Header = () => {
 
                     {userProfile ? (
                         <>
-                            <HomeIcon className='navBtn' />
+                            <Link href='/'>
+                                <HomeIcon className='navBtn' />
+                            </Link>
                             <MenuIcon className='h-6 md:hidden' />
                             <div className='relative navBtn'>
                                 <PaperAirplaneIcon className='navBtn rotate-45' />
@@ -102,7 +104,9 @@ const Header = () => {
                             </div>
                             <PlusCircleIcon onClick={() => setOpen(true)} className='navBtn' />
                             <UserGroupIcon className='navBtn' />
+                            <Link href={`/likes/${userProfile._id}`}>
                             <HeartIcon className='navBtn' />
+                            </Link>
 
                             <img
                                 src={userProfile.image}

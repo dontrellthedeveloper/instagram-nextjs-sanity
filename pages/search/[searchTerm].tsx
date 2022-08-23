@@ -84,12 +84,12 @@ const Search = ({ images }: { images: igImage[] }) => {
                             </div>
                         ) : (
                             <div className='md:mt-16 flex flex-wrap gap-6 md:justify-start '>
-                                {images.length
-                                    ? images?.map((image: igImage) => (
-                                        <Feed post={image} key={image._id} />
-                                    ))
-                                    : <NoResults text={`No Images`} />
-                                }
+                                {/*{images.length*/}
+                                {/*    ? images?.map((image: igImage) => (*/}
+                                {/*        <Feed post={image} key={image._id} />*/}
+                                {/*    ))*/}
+                                {/*    : <NoResults text={`No Images`} />*/}
+                                {/*}*/}
                             </div>
                         )}
                     </div>
@@ -105,22 +105,6 @@ const Search = ({ images }: { images: igImage[] }) => {
             </main>
 
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     );
 };
 

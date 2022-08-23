@@ -71,10 +71,8 @@ const FeedComments = ({ comment, setComment, addComment, comments, isPostingComm
                                 {allUsers?.map(
                                     (user: IUser) =>
                                         user._id === (item.postedBy._ref || item.postedBy._id) && (
-
-
-
-                                            <p key={idx} className='px-5 py-1'>
+                                        <div key={idx}>
+                                            <p className='px-5 py-1'>
                                                 <Link href={`/profile/${user._id}`}>
                                                     <span className='font-bold mr-1 cursor-pointer'>
                                                         {user.userName.replace(/\s+/g, '').toLowerCase()}{' '}
@@ -83,6 +81,7 @@ const FeedComments = ({ comment, setComment, addComment, comments, isPostingComm
                                                 </Link>
                                                 {item.comment}
                                             </p>
+                                        </div>
 
 
                                         )

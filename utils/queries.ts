@@ -171,6 +171,32 @@ export const userLikedPostsQuery = (userId: string | string[]) => {
   return query;
 };
 
+
+
+
+
+export const userFollowedUserQuery = (userId: string | string[]) => {
+  const query = `*[_type == 'user' && '${userId}' in followers[]._ref ] | order(_createdAt desc) {
+    _id,
+    userName,
+   caption,
+     image{
+      asset->{
+        _id,
+        url
+      }
+    },
+   followers,
+  }`;
+
+  return query;
+};
+
+
+
+
+
+
 export const topicPostsQuery = (topic: string | string[]) => {
   const query = `*[_type == "post" && topic match '${topic}*'] {
     _id,
