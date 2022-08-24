@@ -112,10 +112,18 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                     </div>
                     <div className="flex items-center justify-center flex-col col-span-2">
                         <div className="block md:flex container items-center">
-                            <p className="text-2xl mr-4">{userDetails.userName.toLowerCase()}</p>
+                            <div className='flex'>
+                            <p className="text-2xl mr-1.5">
+                                {userDetails.userName.toLowerCase()}
+                            </p>
+                                {userDetails.verified && (
+                                    <GoVerified className='w-3.5 h-3.5 my-auto ml-1 mr-1 text-[#3494f4]' />
+                                )}
+
+                            </div>
 
                             {userProfile && (
-                                <div className='mt-4'>
+                                <div className='mt-4 ml-6'>
                                     <FollowButton
                                         followers={userDetails.followers}
                                     handleFollow={() => handleFollow(true)}

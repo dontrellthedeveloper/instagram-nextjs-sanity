@@ -103,8 +103,8 @@ const Search = ({ images }: { images: igImage[] }) => {
 };
 
 export const getServerSideProps = async ({
-                                             params: { searchTerm },
-                                         }: {
+     params: { searchTerm },
+ }: {
     params: { searchTerm: string };
 }) => {
     const res = await axios.get(`${BASE_URL}/api/search/${searchTerm}`);

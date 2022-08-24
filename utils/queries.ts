@@ -13,7 +13,8 @@ export const allPostsQuery = () => {
       postedBy->{
         _id,
         userName,
-        image
+        image,
+        verified
       },
     likes,
     comments[]{
@@ -22,7 +23,8 @@ export const allPostsQuery = () => {
       postedBy->{
       _id,
       userName,
-      image
+      image,
+      verified
     },
     }
   }`;
@@ -44,7 +46,8 @@ export const postDetailQuery = (postId: string | string[]) => {
     postedBy->{
       _id,
       userName,
-      image
+      image,
+      verified
     },
      likes,
     comments[]{
@@ -73,7 +76,8 @@ export const searchPostsQuery = (searchTerm: string | string[]) => {
     postedBy->{
       _id,
       userName,
-      image
+      image,
+      verified
     },
 likes,
     comments[]{
@@ -82,7 +86,8 @@ likes,
       postedBy->{
       _id,
       userName,
-      image
+      image,
+      verified
     },
     }
   }`;
@@ -121,7 +126,8 @@ export const userCreatedPostsQuery = (userId: string | string[]) => {
     postedBy->{
       _id,
       userName,
-      image
+      image,
+      verified
     },
  likes,
 
@@ -131,7 +137,8 @@ export const userCreatedPostsQuery = (userId: string | string[]) => {
       postedBy->{
       _id,
       userName,
-      image
+      image,
+      verified
     },
     }
   }`;
@@ -149,6 +156,7 @@ export const userFollowersQuery = (followers: string | string[]) => {
     _id,
     userName,
    caption,
+   verified,
      image{
       asset->{
         _id,
@@ -177,7 +185,8 @@ export const userLikedPostsQuery = (userId: string | string[]) => {
     postedBy->{
       _id,
       userName,
-      image
+      image,
+      verified
     },
  likes,
 
@@ -187,7 +196,8 @@ export const userLikedPostsQuery = (userId: string | string[]) => {
       postedBy->{
       _id,
       userName,
-      image
+      image,
+      verified
     },
     }
   }`;
@@ -203,6 +213,7 @@ export const userFollowedUserQuery = (userId: string | string[]) => {
   const query = `*[_type == 'user' && '${userId}' in followers[]._ref ] | order(_createdAt desc) {
     _id,
     userName,
+    verified,
    caption,
      image{
       asset->{
@@ -235,7 +246,8 @@ export const topicPostsQuery = (topic: string | string[]) => {
     postedBy->{
       _id,
       userName,
-      image
+      image,
+      verified
     },
  likes,
 
@@ -245,7 +257,8 @@ export const topicPostsQuery = (topic: string | string[]) => {
       postedBy->{
       _id,
       userName,
-      image
+      image,
+      verified
     },
     }
   }`;

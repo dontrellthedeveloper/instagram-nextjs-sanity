@@ -36,7 +36,12 @@ const SuggestedAccounts = () => {
                                 </Link>
                                 <Link href={`/profile/${user._id}`} >
                                         <div className='flex-1 ml-4 cursor-pointer'>
-                                            <h2 className='font-semibold text-sm'>{user.userName.toLowerCase().replace(/\s+/g, '')}{' '}</h2>
+                                            <div className='flex'>
+                                                <h2 className='font-semibold text-sm'>{user.userName.toLowerCase().replace(/\s+/g, '')}{' '}</h2>
+                                                {user.verified && (
+                                                    <GoVerified className='w-3 h-3 my-auto ml-1.5  text-[#3494f4]' />
+                                                )}
+                                            </div>
                                             <h3 className='text-xs text-gray-400'> {user.fullName}</h3>
                                         </div>
                                 </Link>

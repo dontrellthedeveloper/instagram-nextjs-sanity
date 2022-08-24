@@ -137,11 +137,17 @@ const Detail = ({ postDetails }: IProps) => {
                                     </Link>
 
                                         <p className='flex-1 text-sm'>
-                                            <Link href={`/profile/${post.postedBy._id}`}>
-                                                <span className='font-bold cursor-pointer'>
-                                                    {post.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '}
-                                                </span>
-                                            </Link>
+                                            <div className='flex'>
+                                                <Link href={`/profile/${post.postedBy._id}`}>
+                                                    <span className='font-bold cursor-pointer'>
+                                                        {post.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '}
+                                                    </span>
+                                                </Link>
+                                                {post.postedBy.verified && (
+                                                    <GoVerified className='w-3 h-3 my-auto ml-1.5  text-[#3494f4]' />
+                                                )}
+
+                                            </div>
                                         </p>
 
 

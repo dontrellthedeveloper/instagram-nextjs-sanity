@@ -14,6 +14,11 @@ export default {
             type: 'string',
         },
         {
+            name: 'verified',
+            title: 'Verified',
+            type: 'boolean',
+        },
+        {
             name: 'description',
             title: 'Description',
             type: 'text',

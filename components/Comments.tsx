@@ -64,12 +64,17 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
                         </Link>
 
                         <p className='flex-1 text-sm'>
-                            <Link href={`/profile/${postDetails.postedBy._id}`}>
-                                                <span className='font-bold cursor-pointer'>
-                                                    {postDetails.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '}
-                                                </span>
-                            </Link>
-                            {postDetails.caption}
+                            <div className='flex'>
+                                <Link href={`/profile/${postDetails.postedBy._id}`}>
+                                    <span className='font-bold cursor-pointer mr-1.5'>
+                                        {postDetails.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '}
+                                    </span>
+                                </Link>
+                                {postDetails.postedBy.verified && (
+                                    <GoVerified className='w-3 h-3 my-auto mr-1.5 text-[#3494f4]' />
+                                )}
+                                {postDetails.caption}
+                            </div>
                         </p>
 
 
@@ -82,8 +87,9 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
                                     (user: IUser) =>
                                         user._id === (item.postedBy._ref || item.postedBy._id) && (
                                             <div className=' p-2 items-center' key={idx}>
-                                                <Link href={`/profile/${user._id}`}>
+
                                                     <div className='flex items-start gap-2'>
+                                                        <Link href={`/profile/${user._id}`}>
                                                         <div className='w-12 h-12 border rounded-full p-1 mr-3'>
                                                             <Image
                                                                 width={48}
@@ -94,18 +100,24 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
                                                                 layout='responsive'
                                                             />
                                                         </div>
-
+                                                        </Link>
                                                         <p className='flex-1 text-sm'>
-                                                            <Link href={`/profile/${user._id}`}>
-                                                                <span className='font-bold cursor-pointer'>
-                                                                    {user.userName.replace(/\s+/g, '').toLowerCase()}{' '}
-                                                                    {/*    <GoVerified className='text-blue-400' />*/}
-                                                                </span>
-                                                            </Link>
-                                                            {item.comment}
+                                                            <div className='flex'>
+
+                                                                <Link href={`/profile/${user._id}`}>
+                                                                    <span className='font-bold cursor-pointer mr-1.5'>
+                                                                        {user.userName.replace(/\s+/g, '').toLowerCase()}{' '}
+                                                                        {/*    <GoVerified className='text-blue-400' />*/}
+                                                                    </span>
+                                                                </Link>
+                                                                {user.verified && (
+                                                                <GoVerified className='w-3 h-3 mr-1.5 text-[#3494f4]' />
+                                                                )}
+                                                                {item.comment}
+                                                            </div>
                                                         </p>
                                                     </div>
-                                                </Link>
+
                                             </div>
                                         )
                                 )}

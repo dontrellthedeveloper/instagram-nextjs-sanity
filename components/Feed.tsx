@@ -23,6 +23,7 @@ import NoResults from "./NoResults";
 import Image from "next/image";
 import Comments from "./Comments";
 import FeedComments from "./FeedComments";
+import {GoVerified} from "react-icons/go";
 
 
 
@@ -89,9 +90,23 @@ const Feed: NextPage<IProps> = ({post, comments}) => {
                         <Link href={`/profile/${postCard.postedBy._id}`}>
                             <img src={postCard.postedBy?.image} className='cursor-pointer rounded-full h-12 w-12 object-contain p-[2.5px] border border-red-500 p-1 mr-3' alt=""/>
                         </Link>
-                        <Link href={`/profile/${postCard.postedBy._id}`}>
-                        <p className='cursor-pointer flex-1 font-bold'>{postCard.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '}</p>
-                        </Link>
+
+                        <p className='flex-1 '>
+                            <div className='flex'>
+                                <Link href={`/profile/${postCard.postedBy._id}`}>
+                                    <span className='cursor-pointer font-bold'>
+                                        {postCard.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '}
+                                    </span>
+                                </Link>
+                                {postCard.postedBy.verified && (
+                                <GoVerified className='w-3.5 h-3.5 my-auto ml-1.5  text-[#3494f4]' />
+                                )}
+                            </div>
+
+
+                        </p>
+
+
 
                         <DotsHorizontalIcon className='h-5'/>
                     </div>
@@ -134,13 +149,19 @@ const Feed: NextPage<IProps> = ({post, comments}) => {
 
                     {/*  caption  */}
                     <p className='px-5 pt-3 truncate'>
-                        <Link href={`/profile/${postCard.postedBy._id}`}>
-                            <span className='font-bold mr-1 cursor-pointer'>
-                                {postCard.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '}
+                        <div className='flex'>
 
-                            </span>
-                        </Link>
-                        {postCard.caption}
+                            <Link href={`/profile/${postCard.postedBy._id}`}>
+                                <span className='font-bold mr-1.5 cursor-pointer'>
+                                    {postCard.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '}
+
+                                </span>
+                            </Link>
+                            {postCard.postedBy.verified && (
+                                <GoVerified className='w-3.5 h-3.5 my-auto mr-1.5  text-[#3494f4]' />
+                            )}
+                            {postCard.caption}
+                        </div>
                     </p>
 
 

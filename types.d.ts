@@ -14,6 +14,10 @@ export interface igImage {
     postedBy: {
         _id: string;
         userName: string;
+        fullName: string;
+        verified: boolean;
+        description: string;
+        link: string;
         image: string;
         slug: {
             type: string
@@ -54,6 +58,7 @@ export interface IUser {
     _type: string;
     userName: string;
     fullName: string;
+    verified: boolean;
     description: string;
     link: string;
     image: string;

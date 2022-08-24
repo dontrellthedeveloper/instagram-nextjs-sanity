@@ -3,6 +3,7 @@ import useAuthStore from "../store/authStore";
 import {GoogleLogin} from "@react-oauth/google";
 import {createOrGetUser} from "../utils";
 import Link from "next/link";
+import {GoVerified} from "react-icons/go";
 
 const MiniProfile = () => {
     const { userProfile, addUser, removeUser }: any = useAuthStore();
@@ -19,7 +20,12 @@ const MiniProfile = () => {
                     <Link href={`/profile/${userProfile._id}`}>
 
                         <div className='flex-1 mx-4 cursor-pointer'>
-                            <h2 className='font-bold'> {userProfile.userName.replace(/\s+/g, '').toLowerCase()}{' '}</h2>
+                            <div className='flex'>
+                                <h2 className='font-bold'> {userProfile.userName.replace(/\s+/g, '').toLowerCase()}{' '}</h2>
+                                {userProfile.verified && (
+                                <GoVerified className='w-3 h-3 my-auto ml-1.5  text-[#3494f4]' />
+                                )}
+                            </div>
                             <h3 className='text-sm text-gray-400'>Welcome to Instagram</h3>
                         </div>
                     </Link>
