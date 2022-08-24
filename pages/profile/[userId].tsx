@@ -18,6 +18,8 @@ import LikeButton from "../../components/LikeButton";
 import useAuthStore from "../../store/authStore";
 import UserImageCard from "../../components/UserImageCard";
 import FollowButton from "../../components/FollowButton";
+import {BsGrid3X3, BsPersonSquare} from "react-icons/bs";
+import {BiMoviePlay} from "react-icons/bi";
 
 
 
@@ -97,13 +99,13 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
             <Header/>
 
 
-            <div className='max-w-4xl mt-16 items-center justify-center mx-auto'>
+            <div className='max-w-4xl mt-6 md:mt-16 items-center justify-center mx-auto'>
 
                 <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg">
-                    <div className="container flex justify-center items-center">
+                    <div className="container flex justify-center items-start md:items-center">
                         {/*{profileUsername ? (*/}
                             <img
-                                className="rounded-full h-36 w-36 flex p-[3.5px] border-red-500 border-2"
+                                className="rounded-full h-24 w-24 md:h-36 md:w-36 flex p-[3.5px] border-red-500 border-2"
                                 // alt={`${fullName} profile picture`}
                                 // src={`https://i.ibb.co/KFhK5zL/dontrell-professional.jpg`}
                                 src={userDetails.image}
@@ -116,19 +118,21 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                          {/*)}*/}
                     </div>
                     <div className="flex items-center justify-center flex-col col-span-2">
-                        <div className="container flex items-center">
+                        <div className="block md:flex container items-center">
                             <p className="text-2xl mr-4">{userDetails.userName.toLowerCase()}</p>
 
                             {userProfile && (
-                                <FollowButton
-                                    followers={userDetails.followers}
-                                handleFollow={() => handleFollow(true)}
-                                handleUnfollow={() => handleFollow(false)}
-                                />
+                                <div className='mt-4'>
+                                    <FollowButton
+                                        followers={userDetails.followers}
+                                    handleFollow={() => handleFollow(true)}
+                                    handleUnfollow={() => handleFollow(false)}
+                                    />
+                                </div>
                             )}
 
                         </div>
-                        <div className="container flex mt-4">
+                        <div className="hidden md:flex container flex mt-4">
                             {/*{!followers || !following ? (*/}
                             {/*    <Skeleton count={1} width={677} height={24} />*/}
                             {/*) : (*/}
@@ -136,11 +140,11 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                                     <p className="mr-10">
                                         {userImages?.length == 1 ? (
                                             <>
-                                                <span className="font-bold"> {userImages?.length || 0}</span> photo
+                                                <span className="font-bold"> {userImages?.length || 0}</span> post
                                             </>
                                         ) : (
                                             <>
-                                                <span className="font-bold"> {userImages?.length || 0}</span> photos
+                                                <span className="font-bold"> {userImages?.length || 0}</span> posts
                                             </>
                                         )}
 
@@ -149,38 +153,54 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                                     <p className="mr-10">
                                         {userDetails.followers?.length == 1 ? (
                                             <>
-                                                <span className="font-bold"> {userDetails.followers?.length || 0}</span> follower
+
+                                                <span className="font-bold"> {userDetails.followers?.length || 0}
+                                                </span> follower
+
                                             </>
                                         ) : (
                                             <>
+
                                                 <span className="font-bold"> {userDetails.followers?.length || 0}</span> followers
+
                                             </>
                                         )}
                                         {/*<span className="font-bold">{userDetails.followers?.length || 0} </span>{` `}followers*/}
                                     </p>
                                     <p className="mr-10">
-                                        <span className="font-bold">
-                                            {userFollowedUser?.length || 0}
-
-                                        </span> following
+                                        <span className="font-bold">{userFollowedUser?.length || 0}</span> following
                                     </p>
                                 </>
                             {/*)}*/}
                         </div>
-                        <div className="container mt-4">
-                            <p className="font-bold">{userDetails.fullName}</p>
-                        </div>
-                        <div className="container mt-4">
-                            <p className="text-sm">{userDetails.description}</p>
-                        </div>
-                        <div className="container mt-4">
-                            <p className="text-blue-900 font-medium">{userDetails.link}</p>
-                        </div>
+
+                            <div className="hidden md:block container mt-4">
+                                <p className="font-bold">{userDetails.fullName}</p>
+                            </div>
+                            <div className="hidden md:block container mt-4">
+                                <p className="text-sm">{userDetails.description}</p>
+                            </div>
+                            <div className="hidden md:block container mt-4">
+                                <p className="cursor-pointer text-blue-900 font-medium">{userDetails.link}</p>
+                            </div>
+
                     </div>
 
 
 
                 </div>
+
+
+                <div className="block md:hidden pl-4 container mt-6">
+                    <p className="font-bold">{userDetails.fullName}</p>
+                </div>
+                <div className="block md:hidden pl-4 container mt-2">
+                    <p className="text-sm">{userDetails.description}</p>
+                </div>
+                <div className="block md:hidden pl-4 container mt-1">
+                    <p className="cursor-pointer text-blue-900 font-medium">{userDetails.link}</p>
+                </div>
+
 
 
                 {/*<div className='flex space-x-8 p-6 mt-8 rounded-sm overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200'>*/}
@@ -206,7 +226,7 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                 {/*</div>*/}
 
 
-                <div className='flex space-x-8 p-6 mt-8 rounded-sm overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200'>
+                <div className='flex space-x-4 md:space-x-14 p-6 mt-2 md:mt-8 rounded-sm overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200'>
                     {/*{suggestions.map((profile: any) => (*/}
                     {/*    // <Story key={profile.id} img={profile.avatar} username={profile.username}*/}
                     {/*    // />*/}
@@ -224,9 +244,9 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                     {imagesList.length > 0 ? (
                         imagesList.map((post: igImage, idx: number) => (
                             <div key={idx}>
-                                <img className='h-20 w-20 rounded-full p-[1.5px] border-red-500 border-2 object-contain cursor-pointer hover:scale-110
-                            transition transform duration-200 ease-out mr-5' src={post?.image?.asset.url} alt=""/>
-                                <p className='text-xs w-14 truncate text-center'>{userDetails.userName}</p>
+                                <img className='h-14 w-14 md:h-20 md:w-20 rounded-full p-[1.5px] border-red-500 border-2 object-contain cursor-pointer hover:scale-110
+                            transition transform duration-200 ease-out' src={post?.image?.asset.url} alt=""/>
+                                <p className='text-xs w-14 truncate text-center mx-auto'>{post.caption.toLowerCase()}</p>
                             </div>
 
                         ))
@@ -244,9 +264,87 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
 
                 {/*<Stories/>*/}
 
+                <div className="block md:hidden h-16 border-t border-gray-primary md:mt-4 md:mb-12 md:pt-4">
+                    <div className="h-16 items-center grid grid-cols-3 md:pb-8 md:gap-8 md:mt-4 md:mb-12">
+                        <p className="text-center">
+                            {userImages?.length == 1 ? (
+                                <>
+                                    <span className="font-bold block"> {userImages?.length || 0}</span> <span className='text-xs text-gray-500'>post</span>
+                                </>
+                            ) : (
+                                <>
+                                    <span className="font-bold block"> {userImages?.length || 0}</span> <span className='text-sm text-gray-500'>posts</span>
+                                </>
+                            )}
 
-                <div className="h-16 border-t border-gray-primary mt-4 mb-12 pt-4">
-                    <div className="grid grid-cols-3 pb-8 gap-8 mt-4 mb-12">
+
+                        </p>
+                        <p className="text-center">
+                            {userDetails.followers?.length == 1 ? (
+                                <>
+                                    <span className="font-bold block"> {userDetails.followers?.length || 0}
+                                    </span> <span className='text-xs text-gray-500'>follower</span>
+
+                                </>
+                            ) : (
+                                <>
+
+                                    <span className="font-bold block"> {userDetails.followers?.length || 0}</span> <span className='text-xs text-gray-500'>followers</span>
+
+                                </>
+                            )}
+                            {/*<span className="font-bold">{userDetails.followers?.length || 0} </span>{` `}followers*/}
+                        </p>
+                        <p className="text-center">
+                            <span className="font-bold block">{userFollowedUser?.length || 0}</span> <span className='text-xs text-gray-500'>following</span>
+                        </p>
+                    </div>
+                </div>
+
+
+                <div className="block md:hidden h-8 border-t border-gray-primary md:mt-4 md:mb-12 md:pt-4">
+                    <div className="h-8 items-center grid grid-cols-3 md:pb-8 md:gap-8 md:mt-4 md:mb-12">
+
+                        <div className='text-blue-600git a text-center mx-auto'>
+                            <BsGrid3X3 className=''/>
+                        </div>
+
+                        <div className=' text-center mx-auto'>
+                            <BiMoviePlay/>
+                        </div>
+
+                        <div className=' text-center mx-auto'>
+                            <BsPersonSquare/>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div className="hidden md:flex mx-auto h-5 border-t border-gray-primary md:mt-2 md:mb-6 md:pt-3">
+                    <div className="h-5 flex items-center mx-auto md:pb-8 md:gap-8 md:mt-2">
+
+                        <div className='flex font-bold border-t border-black p-3 text-black text-center mx-auto'>
+                            <BsGrid3X3 className='font-bold items-center'/>
+                            <p className='uppercase text-xs items-center ml-1.5'>Posts</p>
+                        </div>
+
+                        <div className='flex text-center mx-auto text-gray-400'>
+                            <BiMoviePlay className='font-bold items-center '/>
+                            <p className='uppercase text-xs items-center ml-1.5'>Reels</p>
+                        </div>
+
+                        <div className='flex text-center mx-auto text-gray-400'>
+                            <BsPersonSquare className='font-bold items-center '/>
+                            <p className='uppercase text-xs items-center ml-1.5'>Tagged</p>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div className="h-16   lg:mb-12 ">
+                    <div className="grid grid-cols-3 lg:pb-8 md:gap-6 lg:gap-8  lg:mb-12">
                         {/*{!photos*/}
                         {/*    ? new Array(12).fill(0).map((_, i) => <Skeleton key={i} width={320} height={400} />)*/}
                         {/*    : photos.length > 0*/}

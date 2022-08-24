@@ -27,7 +27,7 @@ const Stories = () => {
                             transition transform duration-200 ease-out' src={user.image} alt=""/>
                     </Link>
                     <Link href={`/profile/${user._id}`} >
-                        <p className='text-xs w-14 truncate text-center'>{user.userName}</p>
+                        <p className='text-xs w-14 truncate text-center'>{user.userName.toLowerCase()}</p>
                     </Link>
                 </div>
 

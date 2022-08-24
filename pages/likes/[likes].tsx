@@ -84,19 +84,19 @@ const Likes: NextPage<IProps> = ({ data }) => {
                             </p>
                         </div>
 
-                            <div className='md:mt-8'>
-                                {imagesList.length > 0 ? (
-                                    imagesList.map((post: igImage, idx: number) => (
+                            {/*<div className='md:mt-8'>*/}
+                            {/*    {imagesList.length > 0 ? (*/}
+                            {/*        imagesList.map((post: igImage, idx: number) => (*/}
 
-                                        <Feed post={post} key={idx} />
+                            {/*            <Feed post={post} key={idx} />*/}
 
-                                    ))
-                                ) : (
-                                    <NoResults
-                                        text={`No ${showUserImages ? '' : 'Liked'} Videos Yet`}
-                                    />
-                                )}
-                            </div>
+                            {/*        ))*/}
+                            {/*    ) : (*/}
+                            {/*        <NoResults*/}
+                            {/*            text={`No ${showUserImages ? '' : 'Liked'} Videos Yet`}*/}
+                            {/*        />*/}
+                            {/*    )}*/}
+                            {/*</div>*/}
 
                     </div>
                 </section>
