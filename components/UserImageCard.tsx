@@ -66,13 +66,6 @@ const UserImageCard: NextPage<IProps> = ({post, idx, comments}) => {
                                     clipRule="evenodd"
                                 />
                             </svg>
-                            {/*<LikeButton*/}
-                            {/*    likes={postCard.likes}*/}
-                            {/*    flex='flex'*/}
-                            {/*    handleLike={() => handleLike(true)}*/}
-                            {/*    handleDislike={() => handleLike(false)}*/}
-                            {/*/>*/}
-                            {/*{photo.likes.length}*/}
                             {postCard.likes?.length || 0}
                         </p>
 

@@ -58,23 +58,11 @@ const Likes: NextPage<IProps> = ({ data }) => {
 
 
                 <section className='col-span-2'>
-                    {/*<Stories/>*/}
-                    {/*{images.length*/}
-                    {/*    ? images?.map((image: igImage) => (*/}
-                    {/*        <Feed post={image} key={image._id} />*/}
-                    {/*    ))*/}
-                    {/*    : <NoResults text={`No Videos`} />*/}
-                    {/*}*/}
+
 
 
                     <div className='w-full  '>
                         <div className='flex gap-10 mt-16 mb-5 border-b-2 border-gray-200  z-50 w-full'>
-                            {/*<p onClick={() => setIsAccounts(true)} className={`text-xl  font-semibold cursor-pointer ${accounts} mt-2`}>*/}
-                            {/*    Liked Images*/}
-                            {/*</p>*/}
-                            {/*<p className={`text-xl font-semibold cursor-pointer ${isImages} mt-2`} onClick={() => setIsAccounts(false)}>*/}
-                            {/*    My Images*/}
-                            {/*</p>*/}
 
                             <p className={`text-xl font-semibold cursor-pointer ${images} mt-2`} onClick={() => setShowUserImages(true)}>
                                 Images
@@ -84,19 +72,6 @@ const Likes: NextPage<IProps> = ({ data }) => {
                             </p>
                         </div>
 
-                            {/*<div className='md:mt-8'>*/}
-                            {/*    {imagesList.length > 0 ? (*/}
-                            {/*        imagesList.map((post: igImage, idx: number) => (*/}
-
-                            {/*            <Feed post={post} key={idx} />*/}
-
-                            {/*        ))*/}
-                            {/*    ) : (*/}
-                            {/*        <NoResults*/}
-                            {/*            text={`No ${showUserImages ? '' : 'Liked'} Videos Yet`}*/}
-                            {/*        />*/}
-                            {/*    )}*/}
-                            {/*</div>*/}
 
                     </div>
                 </section>

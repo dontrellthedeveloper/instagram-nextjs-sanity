@@ -128,7 +128,6 @@ const Header = () => {
                     ) : (
                         <GoogleLogin
                             onSuccess={(response) => createOrGetUser(response, addUser) }
-                            // onSuccess={(response) => console.log(response) }
                             onError={() => console.log('Login Failed')}
                         />
                          // <div></div>

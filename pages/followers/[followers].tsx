@@ -40,8 +40,6 @@ const Followers: NextPage<IProps>  = ({ data }) => {
     const { user, userImages, userLikedImages, userFollowedUser, userFollowers } = data;
     const [userDetails, setUserDetails] = useState(user)
 
-    // const router = useRouter();
-    // const { searchTerm }: any = router.query;
 
     const accounts = isAccounts ? 'border-b-2 border-black' : 'text-gray-400';
     const isImages = !isAccounts ? 'border-b-2 border-black' : 'text-gray-400';
@@ -59,7 +57,6 @@ const Followers: NextPage<IProps>  = ({ data }) => {
         fetchImages();
     }, [showUserFollowers, userLikedImages, userImages, userFollowers, userFollowedUser]);
 
-    // const searchedAccounts = allUsers?.filter((user: IUser) => user.userName.toLowerCase().includes(searchTerm));
 
 
 
@@ -72,13 +69,7 @@ const Followers: NextPage<IProps>  = ({ data }) => {
 
 
                 <section className='col-span-2'>
-                    {/*<Stories/>*/}
-                    {/*{images.length*/}
-                    {/*    ? images?.map((image: igImage) => (*/}
-                    {/*        <Feed post={image} key={image._id} />*/}
-                    {/*    ))*/}
-                    {/*    : <NoResults text={`No Videos`} />*/}
-                    {/*}*/}
+
 
 
                     <div className='w-full  '>

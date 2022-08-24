@@ -8,16 +8,30 @@ import axios from 'axios';
 import { igImage } from '../types';
 import Modal from "../components/Modal";
 import Stories from "../components/Stories";
-import React from "react";
+import React, {Dispatch, SetStateAction} from "react";
 import MiniProfile from "../components/MiniProfile";
 import Suggestions from "../components/Suggestions";
 import SuggestedAccounts from "../components/SuggestedAccounts";
+import {BASE_URL} from "../utils";
 
 interface IProps {
     images: igImage[];
+    isPostingComment: Boolean;
+    comment: string;
+    setComment: Dispatch<SetStateAction<string>>;
+    addComment: (e: React.FormEvent) => void;
+    comments: any[];
 }
 
-const Home = ({images}: IProps) => {
+
+interface IComment {
+    comment: string;
+    length?: number;
+    _key: string;
+    postedBy: { _ref?: string; _id?: string };
+}
+
+const Home: NextPage<IProps> = ({images, isPostingComment, comment, setComment, addComment, comments}) => {
     console.log(images)
     return (
         <div className="bg-gray-50 h-screen overflow-y-scroll scrollbar-hide">
@@ -35,7 +49,15 @@ const Home = ({images}: IProps) => {
                     <Stories/>
                     {images.length
                         ? images?.map((image: igImage) => (
-                            <Feed post={image} key={image._id} />
+                            <Feed
+                                isPostingComment={isPostingComment}
+                                comment={comment}
+                                setComment={setComment}
+                                addComment={addComment}
+                                comments={comments}
+                                post={image}
+                                key={image._id}
+                            />
                         ))
                         : <NoResults text={`No Videos`} />
                     }
@@ -62,7 +84,7 @@ const Home = ({images}: IProps) => {
 export default Home;
 
 export const getServerSideProps = async () => {
-    const {data} = await axios.get(`http://localhost:3000/api/post`);
+    const {data} = await axios.get(`${BASE_URL}/api/post`);
 
 
     return {

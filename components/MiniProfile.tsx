@@ -1,6 +1,9 @@
 import React from 'react';
 import useAuthStore from "../store/authStore";
 import {GoogleLogin} from "@react-oauth/google";
+import {createOrGetUser} from "../utils";
+import Link from "next/link";
+
 const MiniProfile = () => {
     const { userProfile, addUser, removeUser }: any = useAuthStore();
 
@@ -31,7 +34,6 @@ const MiniProfile = () => {
 );
 }
 
-import {createOrGetUser} from "../utils";
-import Link from "next/link";
+
 
 export default MiniProfile;

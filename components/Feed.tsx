@@ -92,6 +92,7 @@ const Feed: NextPage<IProps> = ({post, comments}) => {
                         <Link href={`/profile/${postCard.postedBy._id}`}>
                         <p className='cursor-pointer flex-1 font-bold'>{postCard.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '}</p>
                         </Link>
+
                         <DotsHorizontalIcon className='h-5'/>
                     </div>
 
@@ -154,30 +155,6 @@ const Feed: NextPage<IProps> = ({post, comments}) => {
                         isPostingComment={isPostingComment}
                     />
 
-
-
-                    {/*<p className='px-5 py-1'>*/}
-                    {/*    <Link href={`/profile/${postCard.postedBy._id}`}>*/}
-                    {/*        <span className='font-bold mr-1 cursor-pointer'>*/}
-                    {/*            {postCard.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '}*/}
-
-                    {/*        </span>*/}
-                    {/*    </Link>*/}
-                    {/*    {postCard.caption}*/}
-                    {/*</p>*/}
-
-                    {/*  comments  */}
-                    {/*  input box  */}
-                    {/*<form onSubmit={addComment} className='flex items-center p-4'>*/}
-                    {/*    <EmojiHappyIcon className='h-7' />*/}
-                    {/*    <input*/}
-                    {/*        value={comment}*/}
-                    {/*        onChange={(e) => setComment(e.target.value)}*/}
-                    {/*        type="text" placeholder='add a comment...' className='border-none flex-1 focus:ring-0 outline-none'/>*/}
-                    {/*    <button*/}
-                    {/*        onClick={addComment}*/}
-                    {/*        className='font-semibold text-blue-400'>{isPostingComment ? 'Commenting...' : 'Post'}</button>*/}
-                    {/*</form>*/}
                 </div>
 
 

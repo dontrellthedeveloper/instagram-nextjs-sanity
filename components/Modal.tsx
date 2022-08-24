@@ -12,6 +12,7 @@ import useAuthStore from '../store/authStore';
 import { client } from '../utils/client';
 import {MdDelete} from "react-icons/md";
 import {FaCloudUploadAlt} from "react-icons/fa";
+import {BASE_URL} from "../utils";
 
 
 
@@ -83,7 +84,7 @@ function Modal() {
                 }
             };
 
-            await axios.post(`http://localhost:3000/api/post`, doc);
+            await axios.post(`${BASE_URL}/api/post`, doc);
 
             setOpen(false)
             // await router.push('/');
@@ -175,10 +176,7 @@ function Modal() {
                                                     <div className='flex flex-col justify-center items-center'>
                                                         <p className='font-bold text-xl'>
                                                             <FaCloudUploadAlt className='text-gray-300 text-6xl' />
-                                                            {/*<CameraIcon*/}
-                                                            {/*                    className='h-6 w-6 text-red-600'*/}
-                                                            {/*                  aria-hidden='true'*/}
-                                                            {/*                />*/}
+
                                                         </p>
                                                         <p className='text-xl font-semibold'>
                                                             Upload Image
@@ -211,82 +209,6 @@ function Modal() {
                                         Please select an video file (mp4 or webm or ogg)
                                     </p>
                                 )}
-                                {/*<div>*/}
-
-                                {/*    {imageAsset ? (*/}
-                                {/*        <>*/}
-                                {/*            <img*/}
-                                {/*                src={imageAsset?.url}*/}
-                                {/*                className='w-full object-contain cursor-pointer'*/}
-                                {/*                onClick={() => setImageAsset(undefined)}*/}
-                                {/*            />*/}
-                                {/*            <div className=' flex justify-between gap-20'>*/}
-                                {/*                <p className='text-lg'>{imageAsset.originalFilename}</p>*/}
-                                {/*                <button*/}
-                                {/*                    type='button'*/}
-                                {/*                    className=' rounded-full bg-gray-200 text-red-400 p-2 text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out'*/}
-                                {/*                    onClick={() => setImageAsset(undefined)}*/}
-                                {/*                >*/}
-                                {/*                    <MdDelete />*/}
-                                {/*                </button>*/}
-                                {/*            </div>*/}
-                                {/*        </>*/}
-
-                                {/*    ):(*/}
-                                {/*        <>*/}
-                                {/*            <div*/}
-                                {/*                onClick={uploadImage}*/}
-                                {/*                className='mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 cursor-pointer'*/}
-                                {/*            >*/}
-                                {/*                <CameraIcon*/}
-                                {/*                    className='h-6 w-6 text-red-600'*/}
-                                {/*                    aria-hidden='true'*/}
-                                {/*                />*/}
-                                {/*            </div>*/}
-                                {/*        </>*/}
-                                {/*    )}*/}
-
-                                {/*    <div>*/}
-                                {/*        <div className='mt-3 text-center sm:mt-5'>*/}
-                                {/*            <Dialog.Title*/}
-                                {/*                as='h3'*/}
-                                {/*                className='text-lg leading-6 font-medium text-gray-900'*/}
-                                {/*            >*/}
-                                {/*                Upload a Photo*/}
-                                {/*            </Dialog.Title>*/}
-                                {/*            <div>*/}
-                                {/*                <input*/}
-                                {/*                    ref={filePickerRef}*/}
-                                {/*                    type='file'*/}
-                                {/*                    hidden*/}
-                                {/*                    onChange={addImageToPost}*/}
-                                {/*                />*/}
-                                {/*            </div>*/}
-
-                                {/*            <div className='mt-2'>*/}
-                                {/*                <input*/}
-                                {/*                    className='border-none focus:ring-0 w-full text-center'*/}
-                                {/*                    type='text'*/}
-                                {/*                    ref={captionRef}*/}
-                                {/*                    placeholder="Please enter a caption..."*/}
-                                {/*                />*/}
-                                {/*            </div>*/}
-                                {/*        </div>*/}
-
-                                {/*    </div>*/}
-
-                                {/*    <div className='mt-5 sm:mt-5'>*/}
-                                {/*        <button*/}
-                                {/*            type="button"*/}
-                                {/*            // disabled={!selectedFile}*/}
-                                {/*            className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm disabled::bg-gray-300 disabled:cursor-not-allowed hover:disabled:bg-gray-300"*/}
-                                {/*            onClick={handlePost}*/}
-                                {/*        >*/}
-                                {/*            Upload Post*/}
-                                {/*        </button>*/}
-
-                                {/*    </div>*/}
-                                {/*</div>*/}
                                 <div className='flex flex-col gap-3 pb-10'>
                                     <label className='text-md font-medium '>Caption</label>
                                     <input
@@ -295,23 +217,7 @@ function Modal() {
                                         onChange={(e) => setCaption(e.target.value)}
                                         className='rounded lg:after:w-650 outline-none text-md border-2 border-gray-200 p-2'
                                     />
-                                    {/*<label className='text-md font-medium '>Choose a topic</label>*/}
-                                    {/*<select*/}
-                                    {/*    onChange={(e) => {*/}
-                                    {/*        setCategory(e.target.value);*/}
-                                    {/*    }}*/}
-                                    {/*    className='outline-none lg:w-650 border-2 border-gray-200 text-md capitalize lg:p-4 p-2 rounded cursor-pointer'*/}
-                                    {/*>*/}
-                                    {/*    {topics.map((item) => (*/}
-                                    {/*        <option*/}
-                                    {/*            key={item.name}*/}
-                                    {/*            className=' outline-none capitalize bg-white text-gray-700 text-md p-2 hover:bg-slate-300'*/}
-                                    {/*            value={item.name}*/}
-                                    {/*        >*/}
-                                    {/*            {item.name}*/}
-                                    {/*        </option>*/}
-                                    {/*    ))}*/}
-                                    {/*</select>*/}
+
                                     <div className='flex gap-6 mt-10'>
                                         <button
                                             onClick={() => {}}
@@ -325,7 +231,6 @@ function Modal() {
                                             type='button'
                                             className='bg-[#ef0a4f] text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none'
                                         >
-                                            {/*{savingPost ? 'Posting...' : 'Post'}*/}
                                             Post
                                         </button>
                                     </div>

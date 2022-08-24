@@ -38,13 +38,6 @@ const Search = ({ images }: { images: igImage[] }) => {
 
 
                 <section className='col-span-2'>
-                    {/*<Stories/>*/}
-                    {/*{images.length*/}
-                    {/*    ? images?.map((image: igImage) => (*/}
-                    {/*        <Feed post={image} key={image._id} />*/}
-                    {/*    ))*/}
-                    {/*    : <NoResults text={`No Videos`} />*/}
-                    {/*}*/}
 
 
                     <div className='w-full  '>
@@ -68,10 +61,11 @@ const Search = ({ images }: { images: igImage[] }) => {
                                                 <div>
                                                     <div>
                                                         <p className='flex gap-1 items-center text-lg font-bold text-primary'>
-                                                            {user.userName} <GoVerified className='text-blue-400' />
+                                                            {user.userName.toLowerCase()}
+                                                            <GoVerified className='text-blue-400' />
                                                         </p>
                                                         <p className='capitalize text-gray-400 text-sm'>
-                                                            {user.userName}
+                                                            {user.fullName}
                                                         </p>
                                                     </div>
                                                 </div>

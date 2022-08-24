@@ -106,16 +106,9 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                         {/*{profileUsername ? (*/}
                             <img
                                 className="rounded-full h-24 w-24 md:h-36 md:w-36 flex p-[3.5px] border-red-500 border-2"
-                                // alt={`${fullName} profile picture`}
-                                // src={`https://i.ibb.co/KFhK5zL/dontrell-professional.jpg`}
                                 src={userDetails.image}
-                                // onError={(e) => {
-                                //     e.target.src = DEFAULT_IMAGE_PATH;
-                                // }}
                             />
-                         {/*) : (*/}
-                         {/*   <Skeleton circle height={150} width={150} count={1} />*/}
-                         {/*)}*/}
+
                     </div>
                     <div className="flex items-center justify-center flex-col col-span-2">
                         <div className="block md:flex container items-center">
@@ -133,9 +126,6 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
 
                         </div>
                         <div className="hidden md:flex container flex mt-4">
-                            {/*{!followers || !following ? (*/}
-                            {/*    <Skeleton count={1} width={677} height={24} />*/}
-                            {/*) : (*/}
                                 <>
                                     <p className="mr-10">
                                         {userImages?.length == 1 ? (
@@ -165,13 +155,12 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
 
                                             </>
                                         )}
-                                        {/*<span className="font-bold">{userDetails.followers?.length || 0} </span>{` `}followers*/}
+
                                     </p>
                                     <p className="mr-10">
                                         <span className="font-bold">{userFollowedUser?.length || 0}</span> following
                                     </p>
                                 </>
-                            {/*)}*/}
                         </div>
 
                             <div className="hidden md:block container mt-4">
@@ -203,40 +192,8 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
 
 
 
-                {/*<div className='flex space-x-8 p-6 mt-8 rounded-sm overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200'>*/}
-                {/*    {suggestions.map((profile: any) => (*/}
-                {/*        <Story key={profile.id} img={profile.avatar} username={profile.username}*/}
-                {/*        />*/}
-                {/*    ))}*/}
-
-                {/*</div>*/}
-
-
-
-                {/*<div className='flex px-10 pt-5 mt-8 rounded-sm overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200 space-x-10'>*/}
-                {/*    {suggestions.map((profile: any) => (*/}
-                {/*        <div>*/}
-                {/*            <img className='h-20 w-20 rounded-full p-[1.5px] border-red-500 border-2 object-contain cursor-pointer hover:scale-110*/}
-                {/*            transition transform duration-200 ease-out' src={profile.avatar} alt=""/>*/}
-                {/*            <p className='text-xs w-14 truncate text-center'>{profile.username}</p>*/}
-                {/*        </div>*/}
-
-                {/*    ))}*/}
-
-                {/*</div>*/}
-
 
                 <div className='flex space-x-4 md:space-x-14 p-6 mt-2 md:mt-8 rounded-sm overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-200'>
-                    {/*{suggestions.map((profile: any) => (*/}
-                    {/*    // <Story key={profile.id} img={profile.avatar} username={profile.username}*/}
-                    {/*    // />*/}
-
-                    {/*    <div key={profile.id}>*/}
-                    {/*    <img className='h-14 w-14 rounded-full p-[1.5px] border-red-500 border-2 object-contain cursor-pointer hover:scale-110*/}
-                    {/*        transition transform duration-200 ease-out' src={profile.avatar} alt=""/>*/}
-                    {/*    <p className='text-xs w-14 truncate text-center'>{profile.username}</p>*/}
-                    {/*    </div>*/}
-                    {/*))}*/}
 
 
 
@@ -305,7 +262,7 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                 <div className="block md:hidden h-8 border-t border-gray-primary md:mt-4 md:mb-12 md:pt-4">
                     <div className="h-8 items-center grid grid-cols-3 md:pb-8 md:gap-8 md:mt-4 md:mb-12">
 
-                        <div className='text-blue-600git a text-center mx-auto'>
+                        <div className='text-blue-600 border-t border-blue-600 p-2 text-center mx-auto'>
                             <BsGrid3X3 className=''/>
                         </div>
 
@@ -345,10 +302,7 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
 
                 <div className="h-16   lg:mb-12 ">
                     <div className="grid grid-cols-3 lg:pb-8 md:gap-6 lg:gap-8  lg:mb-12">
-                        {/*{!photos*/}
-                        {/*    ? new Array(12).fill(0).map((_, i) => <Skeleton key={i} width={320} height={400} />)*/}
-                        {/*    : photos.length > 0*/}
-                        {/*        ? photos.map((photo) => (*/}
+
 
 
 
@@ -378,52 +332,9 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                         )}
 
 
-                        {/*<div className="relative group">*/}
-                        {/*    <img src='https://i.ibb.co/MDFQ77v/Screen-Shot-2022-08-15-at-1-45-34-PM.jpg'  />*/}
-
-                        {/*    <div className="absolute bottom-0 left-0 bg-gray-200 z-10 w-full justify-evenly items-center h-full bg-black-faded group-hover:flex hidden">*/}
-                        {/*        <p className="flex items-center text-white font-bold">*/}
-                        {/*            <svg*/}
-                        {/*                xmlns="http://www.w3.org/2000/svg"*/}
-                        {/*                viewBox="0 0 20 20"*/}
-                        {/*                fill="currentColor"*/}
-                        {/*                className="w-8 mr-4"*/}
-                        {/*            >*/}
-                        {/*                <path*/}
-                        {/*                    fillRule="evenodd"*/}
-                        {/*                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"*/}
-                        {/*                    clipRule="evenodd"*/}
-                        {/*                />*/}
-                        {/*            </svg>*/}
-                        {/*            /!*{photo.likes.length}*!/*/}
-                        {/*            20*/}
-                        {/*        </p>*/}
-
-                        {/*        <p className="flex items-center text-white font-bold">*/}
-                        {/*            <svg*/}
-                        {/*                xmlns="http://www.w3.org/2000/svg"*/}
-                        {/*                viewBox="0 0 20 20"*/}
-                        {/*                fill="currentColor"*/}
-                        {/*                className="w-8 mr-4"*/}
-                        {/*            >*/}
-                        {/*                <path*/}
-                        {/*                    fillRule="evenodd"*/}
-                        {/*                    d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"*/}
-                        {/*                    clipRule="evenodd"*/}
-                        {/*                />*/}
-                        {/*            </svg>*/}
-                        {/*            /!*{photo.comments.length}*!/*/}
-
-                        {/*            12*/}
-                        {/*        </p>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-
-                                {/*))*/}
-                                {/*: null}*/}
                     </div>
 
-                    {/*{!photos || (photos.length === 0 && <p className="text-center text-2xl">No Posts Yet</p>)}*/}
+
                 </div>
             </div>
 

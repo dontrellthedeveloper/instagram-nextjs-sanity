@@ -95,15 +95,6 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
                                                             />
                                                         </div>
 
-                                                        {/*<p className='flex cursor-pointer gap-1 items-center leading-6 text-primary text-sm'>*/}
-                                                        {/*    /!*{user.userName}{' '}*!/*/}
-                                                        {/*    <span className='font-bold cursor-pointer'>*/}
-                                                        {/*    {user.userName.replace(/\s+/g, '').toLowerCase()}{' '}*/}
-                                                        {/*    <GoVerified className='text-blue-400' />*/}
-                                                        {/*    </span>*/}
-                                                        {/*</p>*/}
-
-
                                                         <p className='flex-1 text-sm'>
                                                             <Link href={`/profile/${user._id}`}>
                                                                 <span className='font-bold cursor-pointer'>
@@ -115,11 +106,6 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
                                                         </p>
                                                     </div>
                                                 </Link>
-                                                {/*<div>*/}
-                                                {/*    <p className='-mt-5 ml-16 text-[16px] mr-8'>*/}
-                                                {/*        {item.comment}*/}
-                                                {/*    </p>*/}
-                                                {/*</div>*/}
                                             </div>
                                         )
                                 )}
@@ -129,37 +115,15 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
                         <NoResults text='No comments yet' />
                     )}
                 </div>
-                {userProfile &&
-                    <>
-                        {/*<div className='absolute bottom-0 left-0  pb-6 px-2 md:px-10 '>*/}
-                        {/*    <form onSubmit={addComment} className='flex gap-4'>*/}
-                        {/*        <input*/}
-                        {/*            value={comment}*/}
-                        {/*            onChange={(e) => setComment(e.target.value)}*/}
-                        {/*            className='bg-primary px-6 py-4 text-md font-medium border-2 w-[250px] md:w-[700px] lg:w-[350px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg'*/}
-                        {/*            placeholder='Add comment..'*/}
-                        {/*        />*/}
-                        {/*        <button className='text-md text-gray-400 '*/}
-                        {/*                onClick={addComment}*/}
-                        {/*        >*/}
-                        {/*            {isPostingComment ? 'Commenting...' : 'Comment'}*/}
-                        {/*        </button>*/}
-                        {/*    </form>*/}
-                        {/*</div>*/}
-                    </>
-
-                }
             </div>
 
             <div className='flex justify-between px-4 pt-4'>
                 <div className='flex space-x-4'>
-                    {/*<HeartIcon className='btn' />*/}
                     <LikeButton
                                     likes={post.likes}
                                     flex='flex'
                                     handleLike={() => handleLike(true)}
                                     handleDislike={() => handleLike(false)}
-                        // likes={} flex={} handleLike={} handleDislike={}
                     />
                     <ChatIcon className='btn' />
                     <PaperAirplaneIcon className='btn' />

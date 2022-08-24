@@ -104,8 +104,8 @@ const Detail = ({ postDetails }: IProps) => {
             <Header/>
 
             <div className='max-w-7xl mt-16 items-center justify-center mx-auto'>
-                <div className='flex absolute bg-white flex-wrap lg:flex-nowrap'>
-                        <div className='relative flex-2
+                <div className='flex absolute flex-wrap lg:flex-nowrap'>
+                        <div className='relative flex-2 md:mx-auto
 
                         flex justify-center items-center bg-blurred-img bg-no-repeat bg-cover bg-center'>
                             <div className='opacity-90 absolute top-6 left-2 lg:left-6 flex gap-6 z-50'>
@@ -125,11 +125,11 @@ const Detail = ({ postDetails }: IProps) => {
                             </div>
                         </div>
 
-                        <div className='relative w-[500px] md:w-[500px] lg:w-[500px]'>
+                        <div className='relative md:mx-auto w-[100%] md:w-[750px] lg:w-[500px]'>
 
 
 
-                            <div className='bg-white border rounded-sm'>
+                            <div className=' border rounded-sm'>
                                 {/* Header */}
                                 <div className='flex items-center p-2 px-4 gap-2'>
                                     <Link href={`/profile/${post.postedBy._id}`}>
@@ -158,78 +158,7 @@ const Detail = ({ postDetails }: IProps) => {
                                         isPostingComment={isPostingComment}
                                     />
 
-                                {/*  img  */}
-                                {/*<Link href={`/detail/${post._id}`}>*/}
-                                {/*    <img src={post.image?.asset?.url} className='object-cover w-full' alt=''/>*/}
-                                {/*</Link>*/}
-                                {/*  Button  */}
-                                {/*<div className='flex justify-between px-4 pt-4'>*/}
-                                {/*    <div className='flex space-x-4'>*/}
-                                {/*        <HeartIcon className='btn' />*/}
-                                {/*        <ChatIcon className='btn' />*/}
-                                {/*        <PaperAirplaneIcon className='btn' />*/}
-                                {/*    </div>*/}
-                                {/*    <BookmarkIcon className='btn' />*/}
-                                {/*</div>*/}
-                                {/*  caption  */}
-                                {/*<p className='p-5 truncate'>*/}
-                                {/*    <span className='font-bold mr-1'>{post.postedBy.userName.replace(/\s+/g, '').toLowerCase()}{' '} </span>*/}
-                                {/*    {post.caption}*/}
-                                {/*</p>*/}
-                                {/*  comments  */}
-                                {/*  input box  */}
-                                {/*<form className='flex items-center p-4'>*/}
-                                {/*    <EmojiHappyIcon className='h-7' />*/}
-                                {/*    <input type="text" placeholder='add a comment...' className='border-none flex-1 focus:ring-0 outline-none'/>*/}
-                                {/*    <button className='font-semibold text-blue-400'>Post</button>*/}
-                                {/*</form>*/}
                             </div>
-
-
-
-
-
-
-                            {/*<div className='lg:mt-20 mt-10*/}
-                            {/*'>*/}
-                            {/*    <Link href={`/profile/${post.postedBy._id}`}>*/}
-                            {/*        <div className='flex gap-4 mb-4 bg-white w-full pl-10 cursor-pointer'>*/}
-                            {/*            <Image*/}
-                            {/*                width={60}*/}
-                            {/*                height={60}*/}
-                            {/*                alt='user-profile'*/}
-                            {/*                className='rounded-full'*/}
-                            {/*                src={post.postedBy.image}*/}
-                            {/*            />*/}
-                            {/*            <div>*/}
-                            {/*                <div className='text-xl font-bold lowercase tracking-wider flex gap-2 items-center justify-center'>*/}
-                            {/*                    {post.postedBy.userName.replace(/\s+/g, '')}{' '}*/}
-                            {/*                    <GoVerified className='text-blue-400 text-xl' />*/}
-                            {/*                </div>*/}
-                            {/*                <p className='text-md'> {post.postedBy.userName}</p>*/}
-                            {/*            </div>*/}
-                            {/*        </div>*/}
-                            {/*    </Link>*/}
-                            {/*    <div className='px-10'>*/}
-                            {/*        <p className=' text-md text-gray-600'>{post.caption}</p>*/}
-                            {/*    </div>*/}
-                            {/*    <div className='mt-10 px-10'>*/}
-                            {/*        {userProfile && <LikeButton*/}
-                            {/*            likes={post.likes}*/}
-                            {/*            flex='flex'*/}
-                            {/*            handleLike={() => handleLike(true)}*/}
-                            {/*            handleDislike={() => handleLike(false)}*/}
-                            {/*        />}*/}
-                            {/*    </div>*/}
-                            {/*    <Comments*/}
-                            {/*        comment={comment}*/}
-                            {/*        setComment={setComment}*/}
-                            {/*        addComment={addComment}*/}
-                            {/*        comments={post.comments}*/}
-                            {/*        isPostingComment={isPostingComment}*/}
-                            {/*    />*/}
-                            {/*</div>*/}
-
 
                         </div>
                     </div>
