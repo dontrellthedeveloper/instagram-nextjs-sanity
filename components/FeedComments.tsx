@@ -73,13 +73,18 @@ const FeedComments = ({ comment, setComment, addComment, comments, isPostingComm
                                         user._id === (item.postedBy._ref || item.postedBy._id) && (
                                         <div key={idx}>
                                             <p className='px-5 py-1'>
-                                                <Link href={`/profile/${user._id}`}>
-                                                    <span className='font-bold mr-1 cursor-pointer'>
-                                                        {user.userName.replace(/\s+/g, '').toLowerCase()}{' '}
+                                                <div className='flex'>
+                                                    <Link href={`/profile/${user._id}`}>
+                                                        <span className='font-bold mr-1.5 cursor-pointer'>
+                                                            {user.userName.replace(/\s+/g, '').toLowerCase()}{' '}
 
-                                                    </span>
-                                                </Link>
-                                                {item.comment}
+                                                        </span>
+                                                    </Link>
+                                                    {user.verified && (
+                                                        <GoVerified className='w-3.5 h-3.5 my-auto mr-1.5  text-[#3494f4]' />
+                                                    )}
+                                                    {item.comment}
+                                                </div>
                                             </p>
                                         </div>
 

@@ -158,7 +158,7 @@ const Feed: NextPage<IProps> = ({post, comments}) => {
                                 </span>
                             </Link>
                             {postCard.postedBy.verified && (
-                                <GoVerified className='w-3.5 h-3.5 my-auto mr-1.5  text-[#3494f4]' />
+                                <GoVerified className='w-3.5 h-3.5 mr-1.5 my-auto text-[#3494f4]' />
                             )}
                             {postCard.caption}
                         </div>

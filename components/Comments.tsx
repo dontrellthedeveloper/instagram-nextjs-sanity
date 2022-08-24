@@ -57,7 +57,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
     return (
         <>
             <div className='border-t-2 border-gray-200 px-2 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]'>
-                <div className='overflow-scroll lg:h-[564px]'>
+                <div className='overflow-scroll lg:h-[520px]'>
                     <div className='flex items-center p-2 gap-2'>
                         <Link href={`/profile/${postDetails.postedBy._id}`}>
                             <img src={postDetails.postedBy?.image} className='cursor-pointer rounded-full h-12 w-12 object-contain border p-1 mr-3' alt=""/>
@@ -111,7 +111,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
                                                                     </span>
                                                                 </Link>
                                                                 {user.verified && (
-                                                                <GoVerified className='w-3 h-3 mr-1.5 text-[#3494f4]' />
+                                                                <GoVerified className='w-3 h-3 my-auto mr-1.5 text-[#3494f4]' />
                                                                 )}
                                                                 {item.comment}
                                                             </div>
@@ -142,6 +142,19 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
                 </div>
                 <BookmarkIcon className='btn' />
             </div>
+
+            <p className='px-5 pt-5 truncate font-bold'>
+                {post.likes?.length == 1 ? (
+                    <>
+                        {post.likes?.length || 0} like
+                    </>
+                ) : (
+                    <>
+                        {post.likes?.length || 0} likes
+                    </>
+                )}
+
+            </p>
 
             <form onSubmit={addComment} className='flex items-center p-4'>
                 <EmojiHappyIcon className='h-7' />
