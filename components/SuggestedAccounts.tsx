@@ -32,7 +32,7 @@ const SuggestedAccounts = () => {
                             <div key={user._id} className='flex items-center justify-between mt-3'>
                                 <Link href={`/profile/${user._id}`} >
 
-                                        <img className='w-10 h-10 rounded-full border border-red-500 p-[2px] cursor-pointer' src={user.image} alt=""/>
+                                        <img className='w-10 h-10 rounded-full border border-red-500 p-0.5 cursor-pointer' src={user.image} alt=""/>
                                 </Link>
                                 <Link href={`/profile/${user._id}`} >
                                         <div className='flex-1 ml-4 cursor-pointer'>

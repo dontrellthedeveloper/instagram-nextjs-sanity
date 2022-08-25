@@ -14,7 +14,7 @@ const MiniProfile = () => {
             {userProfile ? (
                 <div className='flex items-center justify-between mt-14 ml-10'>
                     <Link href={`/profile/${userProfile._id}`}>
-                        <img className='rounded-full border p-[2px] w-16 h-16 cursor-pointer' src={userProfile.image} alt=''/>
+                        <img className='rounded-full border border-red-500 p-0.5 w-16 h-16 cursor-pointer' src={userProfile.image} alt=''/>
                     </Link>
 
                     <Link href={`/profile/${userProfile._id}`}>

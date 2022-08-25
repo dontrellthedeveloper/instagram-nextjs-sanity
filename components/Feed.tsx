@@ -88,7 +88,7 @@ const Feed: NextPage<IProps> = ({post, comments}) => {
                     <div className='flex items-center p-5'>
 
                         <Link href={`/profile/${postCard.postedBy._id}`}>
-                            <img src={postCard.postedBy?.image} className='cursor-pointer rounded-full h-12 w-12 object-contain p-[2.5px] border border-red-500 p-1 mr-3' alt=""/>
+                            <img src={postCard.postedBy?.image} className='cursor-pointer rounded-full h-12 w-12 object-contain p-[2.5px] border border-red-500 p-0.5 mr-3' alt=""/>
                         </Link>
 
                         <p className='flex-1 '>
@@ -148,7 +148,7 @@ const Feed: NextPage<IProps> = ({post, comments}) => {
                     </p>
 
                     {/*  caption  */}
-                    <p className='px-5 pt-3 truncate'>
+                    <p className='px-5 pt-3 truncate ...'>
                         <div className='flex'>
 
                             <Link href={`/profile/${postCard.postedBy._id}`}>
@@ -160,7 +160,9 @@ const Feed: NextPage<IProps> = ({post, comments}) => {
                             {postCard.postedBy.verified && (
                                 <GoVerified className='w-3.5 h-3.5 mr-1.5 my-auto text-[#3494f4]' />
                             )}
-                            {postCard.caption}
+                            <span className='truncate'>
+                                {postCard.caption}
+                            </span>
                         </div>
                     </p>
 

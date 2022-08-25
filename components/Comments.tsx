@@ -60,7 +60,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
                 <div className='overflow-scroll lg:h-[520px]'>
                     <div className='flex items-center p-2 gap-2'>
                         <Link href={`/profile/${postDetails.postedBy._id}`}>
-                            <img src={postDetails.postedBy?.image} className='cursor-pointer rounded-full h-12 w-12 object-contain border p-1 mr-3' alt=""/>
+                            <img src={postDetails.postedBy?.image} className='cursor-pointer rounded-full h-12 w-12 object-contain border border-red-500 p-0.5 mr-3' alt=""/>
                         </Link>
 
                         <p className='flex-1 text-sm'>
@@ -90,7 +90,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
 
                                                     <div className='flex items-start gap-2'>
                                                         <Link href={`/profile/${user._id}`}>
-                                                        <div className='w-12 h-12 border rounded-full p-1 mr-3'>
+                                                        <div className='w-12 h-12 border border-red-500 rounded-full p-0.5 mr-3'>
                                                             <Image
                                                                 width={48}
                                                                 height={48}
@@ -111,7 +111,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
                                                                     </span>
                                                                 </Link>
                                                                 {user.verified && (
-                                                                <GoVerified className='w-3 h-3 my-auto mr-1.5 text-[#3494f4]' />
+                                                                <GoVerified className='w-3 h-3 mt-1 mr-1.5 text-[#3494f4]' />
                                                                 )}
                                                                 {item.comment}
                                                             </div>

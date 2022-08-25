@@ -133,7 +133,7 @@ const Detail = ({ postDetails }: IProps) => {
                                 {/* Header */}
                                 <div className='flex items-center p-2 px-4 gap-2'>
                                     <Link href={`/profile/${post.postedBy._id}`}>
-                                        <img src={post.postedBy?.image} className='cursor-pointer rounded-full h-12 w-12 object-contain border p-1 mr-3' alt=""/>
+                                        <img src={post.postedBy?.image} className='cursor-pointer rounded-full h-12 w-12 object-contain border border-red-500 p-0.5 mr-3' alt=""/>
                                     </Link>
 
                                         <p className='flex-1 text-sm'>
