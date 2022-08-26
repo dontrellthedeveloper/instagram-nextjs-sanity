@@ -32,7 +32,10 @@ interface IComment {
 }
 
 const Home: NextPage<IProps> = ({images, isPostingComment, comment, setComment, addComment, comments}) => {
-    console.log(images)
+
+
+
+
     return (
         <div className="bg-gray-50 h-screen overflow-y-scroll scrollbar-hide">
 

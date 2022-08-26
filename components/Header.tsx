@@ -104,15 +104,17 @@ const Header = () => {
                             </div>
                             <PlusCircleIcon onClick={() => setOpen(true)} className='navBtn' />
                             <UserGroupIcon className='navBtn' />
-                            <Link href={`/likes/${userProfile._id}`}>
+                            {/*<Link href={`/likes/${userProfile._id}`}>*/}
                             <HeartIcon className='navBtn' />
-                            </Link>
+                            {/*</Link>*/}
 
-                            <img
-                                src={userProfile.image}
-                                alt='profile pic'
-                                className=' h-10 rounded-full cursor-pointer'
-                            />
+                            <Link href={`/profile/${userProfile._id}`}>
+                                <img
+                                    src={userProfile.image}
+                                    alt='profile pic'
+                                    className=' h-10 rounded-full cursor-pointer'
+                                />
+                            </Link>
                             <button
                                 type='button'
                                 className=' border-2 p-2 rounded-full cursor-pointer outline-none shadow-md'

@@ -209,8 +209,10 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                     {imagesList.length > 0 ? (
                         imagesList.map((post: igImage, idx: number) => (
                             <div key={idx}>
-                                <img className='h-14 w-14 md:h-20 md:w-20 rounded-full p-[1.5px] border-red-500 border-2 object-contain cursor-pointer hover:scale-110
-                            transition transform duration-200 ease-out' src={post?.image?.asset.url} alt=""/>
+                                <Link href={`/detail/${post._id}`}>
+                                    <img className='h-14 w-14 md:h-20 md:w-20 rounded-full p-[1.5px] border-red-500 border-2 object-contain cursor-pointer hover:scale-110
+                                transition transform duration-200 ease-out' src={post?.image?.asset.url} alt=""/>
+                                </Link>
                                 <p className='text-xs w-14 truncate text-center mx-auto'>{post.caption.toLowerCase()}</p>
                             </div>
 

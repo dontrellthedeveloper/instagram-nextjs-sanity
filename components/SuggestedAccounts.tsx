@@ -46,6 +46,7 @@ const SuggestedAccounts = () => {
                                         </div>
                                 </Link>
 
+
                                 <button className='text-blue-400 text-xs font-bold'>Follow</button>
 
                             </div>
