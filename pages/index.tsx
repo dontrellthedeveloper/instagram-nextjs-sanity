@@ -14,6 +14,7 @@ import Suggestions from "../components/Suggestions";
 import SuggestedAccounts from "../components/SuggestedAccounts";
 import {BASE_URL} from "../utils";
 
+
 interface IProps {
     images: igImage[];
     isPostingComment: Boolean;
