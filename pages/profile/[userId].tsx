@@ -152,14 +152,14 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                                         {userDetails.followers?.length == 1 ? (
                                             <>
 
-                                                <span className="font-bold"> {userDetails.followers?.length || 0}
+                                                <span className="font-bold"> {userDetails?.followers?.length || 0}
                                                 </span> follower
 
                                             </>
                                         ) : (
                                             <>
 
-                                                <span className="font-bold"> {userDetails.followers?.length || 0}</span> followers
+                                                <span className="font-bold"> {userDetails?.followers?.length || 0}</span> followers
 
                                             </>
                                         )}
@@ -172,13 +172,13 @@ const Profile: NextPage<IProps> = ({ data, isPostingComment, comment, setComment
                         </div>
 
                             <div className="hidden md:block container mt-4">
-                                <p className="font-bold">{userDetails.fullName}</p>
+                                <p className="font-bold">{userDetails?.fullName}</p>
                             </div>
                             <div className="hidden md:block container mt-4">
-                                <p className="text-sm">{userDetails.description}</p>
+                                <p className="text-sm">{userDetails?.description}</p>
                             </div>
                             <div className="hidden md:block container mt-4">
-                                <p className="cursor-pointer text-blue-900 font-medium">{userDetails.link}</p>
+                                <p className="cursor-pointer text-blue-900 font-medium">{userDetails?.link}</p>
                             </div>
 
                     </div>
